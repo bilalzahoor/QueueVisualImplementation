@@ -30,6 +30,8 @@ public class HomeFrame {
 	JButton btnDst;
 	public int capacity;
 	JComboBox cmbCapacity;
+	JLabel lblEmpty;
+	static HomeFrame homeWin;
 
 	/**
 	 * Launch the application.
@@ -39,6 +41,7 @@ public class HomeFrame {
 			public void run() {
 				try {
 					HomeFrame window = new HomeFrame();
+					homeWin=window;
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +70,7 @@ public class HomeFrame {
 		visualPanel.setBounds(10, 58, 1023, 653);
 		frame.getContentPane().add(visualPanel);
 		
-		JLabel lblEmpty = new JLabel("QUEUE IS EMPTY");
+		lblEmpty = new JLabel("QUEUE IS EMPTY");
 		lblEmpty.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		visualPanel.add(lblEmpty);
 		
@@ -78,7 +81,7 @@ public class HomeFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		controlPanel.add(comboBox);
-		comboBox.setForeground(Color.RED);
+		comboBox.setForeground(Color.BLACK);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
 		comboBox.setBackground(Color.LIGHT_GRAY);
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -90,24 +93,26 @@ public class HomeFrame {
 		btnCrt.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnCrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				CreateQ win = new CreateQ();
+				CreateQueueFrame win = new CreateQueueFrame(homeWin);
 				win.frame.setVisible(true);
-				
 				btnDst.setEnabled(true);
 			}
 		});
 		
 		cmbCapacity = new JComboBox();
+		cmbCapacity.addItem("5");
+		cmbCapacity.addItem("10");
+		controlPanel.add(cmbCapacity);
+		capacity= 5;
 		cmbCapacity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 						String s= cmbCapacity.getSelectedItem().toString();
 						capacity=Integer.parseInt(s);
+					
 			}
 		});
-		cmbCapacity.addItem("5");
-		cmbCapacity.addItem("10");
-		controlPanel.add(cmbCapacity);
+		
+		
 		controlPanel.add(btnCrt);
 		
 		Component verticalStrut_1 = Box.createVerticalStrut(40);

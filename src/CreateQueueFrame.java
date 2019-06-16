@@ -7,13 +7,15 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class CreateQueueFrame {
 
 	 public JFrame frame;
 	 private JTextField textField;
-	 HomeFrame home;
+	 static HomeFrame homeWin;
 	 JLabel lblNewLabel;
+	 JLabel lblCreateError;
 
 	/**
 	 * Launch the application.
@@ -22,7 +24,7 @@ public class CreateQueueFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CreateQueueFrame window = new CreateQueueFrame();
+					CreateQueueFrame window = new CreateQueueFrame(homeWin);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +36,8 @@ public class CreateQueueFrame {
 	/**
 	 * Create the application.
 	 */
-	public CreateQueueFrame() {
+	public CreateQueueFrame(HomeFrame home) {
+		this.homeWin=home;
 		initialize();
 	}
 
@@ -48,23 +51,25 @@ public class CreateQueueFrame {
 		frame.getContentPane().setLayout(null);
 		
 		lblNewLabel = new JLabel("Enter Number of Elements");
-		lblNewLabel.setBounds(0, 0, 165, 77);
+		lblNewLabel.setBounds(32, 0, 165, 77);
 		frame.getContentPane().add(lblNewLabel);
-		home = new HomeFrame();
 		
 		textField = new JTextField();
 		textField.setBounds(222, 27, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+		lblCreateError = new JLabel("");
+		lblCreateError.setForeground(Color.RED);
+		lblCreateError.setBounds(32, 166, 380, 84);
+		frame.getContentPane().add(lblCreateError);
 		
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				int c = Integer.parseInt(textField.getText().toString());
-				lblNewLabel.setText("capac"+home.capacity+"ele"+c);
-				if(c<=home.capacity) {
-					lblNewLabel.setText("capac"+home.capacity+"ele"+c);
+				if(c>homeWin.capacity) {
+					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+")");
 					
 				}
 				else {
@@ -74,10 +79,11 @@ public class CreateQueueFrame {
 				}
 				
 				
-				
 			}
 		});
-		btnCreate.setBounds(129, 94, 97, 25);
+		btnCreate.setBounds(119, 81, 149, 25);
 		frame.getContentPane().add(btnCreate);
+		
+		
 	}
 }
