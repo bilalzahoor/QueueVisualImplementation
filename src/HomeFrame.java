@@ -23,6 +23,8 @@ import javax.swing.Box;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import java.awt.ComponentOrientation;
 
 public class HomeFrame {
 
@@ -62,6 +64,7 @@ public class HomeFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setForeground(new Color(204, 204, 204));
 		frame.setBounds(100, 100, 1336, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -73,23 +76,23 @@ public class HomeFrame {
 		lblEmpty = new JLabel("QUEUE IS EMPTY");
 		lblEmpty.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		visualPanel.add(lblEmpty);
+		capacity= 5;
 		
 		Panel controlPanel = new Panel();
-		controlPanel.setBounds(1053, 10, 182, 286);
+		controlPanel.setBounds(1053, 58, 255, 653);
 		frame.getContentPane().add(controlPanel);
-		controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+		controlPanel.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(0, 0, 255, 32);
 		controlPanel.add(comboBox);
 		comboBox.setForeground(Color.BLACK);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
 		comboBox.setBackground(Color.LIGHT_GRAY);
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
-		Component verticalStrut = Box.createVerticalStrut(40);
-		controlPanel.add(verticalStrut);
-		
 		JButton btnCrt = new JButton("Create");
+		btnCrt.setBounds(0, 472, 49, 23);
 		btnCrt.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnCrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -100,10 +103,11 @@ public class HomeFrame {
 		});
 		
 		cmbCapacity = new JComboBox();
+		cmbCapacity.setComponentOrientation(ComponentOrientation.UNKNOWN);
+		cmbCapacity.setBounds(12, 50, 231, 32);
 		cmbCapacity.addItem("5");
 		cmbCapacity.addItem("10");
 		controlPanel.add(cmbCapacity);
-		capacity= 5;
 		cmbCapacity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 						String s= cmbCapacity.getSelectedItem().toString();
@@ -115,25 +119,19 @@ public class HomeFrame {
 		
 		controlPanel.add(btnCrt);
 		
-		Component verticalStrut_1 = Box.createVerticalStrut(40);
-		controlPanel.add(verticalStrut_1);
-		
 		btnDst = new JButton("Destroy");
+		btnDst.setBounds(0, 508, 49, 23);
 		controlPanel.add(btnDst);
 		btnDst.setEnabled(false);
 		btnDst.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
-		Component verticalStrut_2 = Box.createVerticalStrut(40);
-		controlPanel.add(verticalStrut_2);
-		
 		JButton btnNewButton_1 = new JButton("Enqueue");
+		btnNewButton_1.setBounds(186, 472, 57, 23);
 		controlPanel.add(btnNewButton_1);
 		btnNewButton_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
-		Component verticalStrut_3 = Box.createVerticalStrut(40);
-		controlPanel.add(verticalStrut_3);
-		
 		JButton btnNewButton_2 = new JButton("Dequeue");
+		btnNewButton_2.setBounds(186, 508, 57, 23);
 		controlPanel.add(btnNewButton_2);
 		btnNewButton_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 	}

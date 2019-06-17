@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class CreateQueueFrame {
 
@@ -46,6 +47,7 @@ public class CreateQueueFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -64,6 +66,7 @@ public class CreateQueueFrame {
 		frame.getContentPane().add(lblCreateError);
 		
 		JButton btnCreate = new JButton("Create");
+		btnCreate.setBackground(SystemColor.activeCaption);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
