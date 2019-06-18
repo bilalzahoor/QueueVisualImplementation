@@ -76,7 +76,9 @@ public class CreateQueueFrame {
 					
 				}
 				else {
-					
+					ElementWindow win = new ElementWindow();
+					win.frame.setVisible(true);
+					frame.setVisible(false);
 					
 					
 				}
