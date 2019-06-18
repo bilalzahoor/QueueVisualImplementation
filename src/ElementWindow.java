@@ -36,7 +36,7 @@ public class ElementWindow {
 	 * Create the application.
 	 */
 	public ElementWindow() {
-		noOfElements=3;
+		noOfElements=6;
 		initialize();
 	}
 
@@ -55,21 +55,21 @@ public class ElementWindow {
 		
 		elements = new Panel[noOfElements];
 		for(int i=0;i<noOfElements;i++) {
-	
-		//elements[i]=panel_1;
+			JScrollPane scrollPane = new JScrollPane();
+			panel.add(scrollPane);
+			Panel panel_1 = new Panel();
+			scrollPane.setViewportView(panel_1);
+				
+				JLabel lblNewLabel = new JLabel("Element1\r\n");
+				panel_1.add(lblNewLabel);
+				
+				textField = new JTextField();
+				panel_1.add(textField);
+				textField.setColumns(10);
+		elements[i]=panel_1;
 		}
 	
-	JScrollPane scrollPane = new JScrollPane();
-	panel.add(scrollPane);
-	Panel panel_1 = new Panel();
-	scrollPane.setViewportView(panel_1);
-		
-		JLabel lblNewLabel = new JLabel("Element1\r\n");
-		panel_1.add(lblNewLabel);
-		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setColumns(10);
+	
 	}
 
 }

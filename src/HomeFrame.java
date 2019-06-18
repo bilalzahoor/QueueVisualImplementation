@@ -1,5 +1,7 @@
 import java.awt.EventQueue;
 
+import java.applet.Applet;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
@@ -64,16 +66,18 @@ public class HomeFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setForeground(new Color(204, 204, 204));
+		frame.getContentPane().setForeground(new Color(44, 62, 82));
 		frame.setBounds(100, 100, 1336, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		Panel visualPanel = new Panel();
+		visualPanel.setBackground(Color.decode("#2c3e50"));
 		visualPanel.setBounds(10, 58, 1023, 653);
 		frame.getContentPane().add(visualPanel);
 		
 		lblEmpty = new JLabel("QUEUE IS EMPTY");
+		lblEmpty.setForeground(Color.ORANGE);
 		lblEmpty.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		visualPanel.add(lblEmpty);
 		capacity= 5;
@@ -88,7 +92,7 @@ public class HomeFrame {
 		controlPanel.add(comboBox);
 		comboBox.setForeground(Color.BLACK);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
-		comboBox.setBackground(Color.LIGHT_GRAY);
+		comboBox.setBackground(Color.ORANGE);
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
 		JButton btnCrt = new JButton("Create");
@@ -103,6 +107,8 @@ public class HomeFrame {
 		});
 		
 		cmbCapacity = new JComboBox();
+		cmbCapacity.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		cmbCapacity.setBackground(Color.ORANGE);
 		cmbCapacity.setComponentOrientation(ComponentOrientation.UNKNOWN);
 		cmbCapacity.setBounds(12, 50, 231, 32);
 		cmbCapacity.addItem("5");
