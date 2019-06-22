@@ -41,8 +41,10 @@ public class ElementWindow {
 	/**
 	 * Create the application.
 	 */
+
 	public ElementWindow(int n) {
 		noOfElements=n;
+
 		initialize();
 	}
 
@@ -63,6 +65,7 @@ public class ElementWindow {
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 	
 		
+
 		Panel panel_1 = new Panel();
 	
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
@@ -99,7 +102,8 @@ public class ElementWindow {
 			
 		}
 	
-		//lblNewLabel_1.setText(arg0);
+
+
 	}
 
 }
