@@ -27,6 +27,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import java.awt.ComponentOrientation;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import javax.swing.JScrollPane;
 
 public class HomeFrame {
 
@@ -36,6 +39,7 @@ public class HomeFrame {
 	JComboBox cmbCapacity;
 	JLabel lblEmpty;
 	static HomeFrame homeWin;
+	JPanel panelQueue;
 
 	/**
 	 * Launch the application.
@@ -83,8 +87,27 @@ public class HomeFrame {
 		lblEmpty.setForeground(Color.decode("#ffbf00"));
 		lblEmpty.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		visualPanel.add(lblEmpty);
-		capacity= 5;
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBounds(12, 169, 1023, 354);
+		visualPanel.add(panel);
+		panel.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(107, 114, 549, 157);
+		panel.add(scrollPane);
+		
+		JPanel panel_1 = new JPanel();
+		scrollPane.setViewportView(panel_1);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
+		
+		 panelQueue = new JPanel();
+		panel_1.add(panelQueue);
+		panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
+		
+		
+		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
 		controlPanel.setBounds(1053, 0, 265, 721);
@@ -129,7 +152,7 @@ public class HomeFrame {
 		
 		
 		controlPanel.add(btnCrt);
-		
+		displayQueue(10);
 		btnDst = new JButton("Destroy");
 		btnDst.setBackground(Color.decode("#FAF0F6"));
 		btnDst.setBounds(150, 496, 103, 28);
@@ -155,5 +178,34 @@ public class HomeFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(12, 13, 241, 116);
 		controlPanel.add(lblNewLabel);
+	}
+	void displayQueue(int n) {
+		
+		
+		Component horizontalStrut = Box.createHorizontalStrut(20);
+		panelQueue.add(horizontalStrut);
+		for(int i=0;i<=capacity;i++) {
+		JPanel panelElement = new JPanel();
+		panelElement.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		panelQueue.add(panelElement);
+		panelElement.setLayout(new BoxLayout(panelElement, BoxLayout.Y_AXIS));
+		
+		JLabel lblIndex = new JLabel("Index");
+		panelElement.add(lblIndex);
+		
+		JLabel lblElement = new JLabel("Element");
+		lblElement.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelElement.add(lblElement);
+		
+		JLabel lblPointer = new JLabel("Pointer");
+		panelElement.add(lblPointer);
+		Component horizontalStrut1 = Box.createHorizontalStrut(20);
+		panelQueue.add(horizontalStrut1);
+		
+		
+		}
+		
+		
+		
 	}
 }
