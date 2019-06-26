@@ -90,7 +90,7 @@ public class HomeFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(12, 169, 1023, 354);
+		panel.setBounds(12, 151, 1023, 354);
 		visualPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -105,6 +105,11 @@ public class HomeFrame {
 		 panelQueue = new JPanel();
 		panel_1.add(panelQueue);
 		panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
+		
+		JLabel lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 62));
+		panel_1.add(lblQueueIsEmpty);
+		lblQueueIsEmpty.setVisible(true);
 		
 		
 		capacity= 5;
@@ -131,6 +136,7 @@ public class HomeFrame {
 				CreateQueueFrame win = new CreateQueueFrame(homeWin);
 				win.frame.setVisible(true);
 				btnDst.setEnabled(true);
+				lblQueueIsEmpty.setVisible(false);
 			}
 		});
 		

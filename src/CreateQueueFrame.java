@@ -17,7 +17,6 @@ public class CreateQueueFrame {
 	 static HomeFrame homeWin;
 	 JLabel lblNewLabel;
 	 JLabel lblCreateError;
-
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +68,6 @@ public class CreateQueueFrame {
 		btnCreate.setBackground(SystemColor.activeCaption);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				int c = Integer.parseInt(textField.getText().toString());
 				if(c>homeWin.capacity) {
 					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+")");

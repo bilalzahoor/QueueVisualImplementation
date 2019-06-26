@@ -1,7 +1,9 @@
 import java.awt.EventQueue;
-
+import java.awt.*;
 import javax.swing.JFrame;
 import java.awt.Panel;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -9,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -22,14 +25,13 @@ public class ElementWindow {
 	static int noOfElements;
 	JTextField[] elements;
 	static HomeFrame home;
-
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				try {;
 					ElementWindow window = new ElementWindow(noOfElements,home);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -73,13 +75,14 @@ public class ElementWindow {
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 		panel.add(panel_1);
 		JButton btnNewButton = new JButton("Create");
-		
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				//for(int i=0;i<noOfElements;i++) {
 				//	JTextField t =(JTextField)elements[i].getComponent(2);	
 				//}
 				home.displayQueue(noOfElements,elements);
+			frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
@@ -104,9 +107,13 @@ public class ElementWindow {
 			
 		}
 		panel_1.revalidate();
-	
+		
 
+	}
 
+	protected void close() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
