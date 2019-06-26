@@ -40,7 +40,7 @@ public class HomeFrame {
 	JLabel lblEmpty;
 	static HomeFrame homeWin;
 	JPanel panelQueue;
-
+	JTextField[] elements;
 	/**
 	 * Launch the application.
 	 */
@@ -152,7 +152,7 @@ public class HomeFrame {
 		
 		
 		controlPanel.add(btnCrt);
-		displayQueue(10);
+	//	displayQueue(10);
 		btnDst = new JButton("Destroy");
 		btnDst.setBackground(Color.decode("#FAF0F6"));
 		btnDst.setBounds(150, 496, 103, 28);
@@ -179,28 +179,34 @@ public class HomeFrame {
 		lblNewLabel.setBounds(12, 13, 241, 116);
 		controlPanel.add(lblNewLabel);
 	}
-	void displayQueue(int n) {
+	void displayQueue(int n, JTextField[] e) {
+		
+		//elements=new JTextField[n];
 		
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		panelQueue.add(horizontalStrut);
-		for(int i=0;i<=capacity;i++) {
+		for(int i=0;i<n;i++) {
 		JPanel panelElement = new JPanel();
 		panelElement.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		panelQueue.add(panelElement);
 		panelElement.setLayout(new BoxLayout(panelElement, BoxLayout.Y_AXIS));
 		
-		JLabel lblIndex = new JLabel("Index");
+		JLabel lblIndex = new JLabel(""+i);
 		panelElement.add(lblIndex);
 		
-		JLabel lblElement = new JLabel("Element");
+		JLabel lblElement = new JLabel(""+e[i].getText());
 		lblElement.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelElement.add(lblElement);
-		
-		JLabel lblPointer = new JLabel("Pointer");
+		JLabel lblPointer = new JLabel("   ");
+		if(i==0)
+			lblPointer.setText("Front");
+		else if(i==(n-1))
+			lblPointer.setText("Rear");
 		panelElement.add(lblPointer);
 		Component horizontalStrut1 = Box.createHorizontalStrut(20);
 		panelQueue.add(horizontalStrut1);
+		panelQueue.revalidate();
 		
 		
 		}

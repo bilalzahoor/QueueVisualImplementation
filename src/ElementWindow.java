@@ -21,6 +21,7 @@ public class ElementWindow {
 	private JTextField textField;
 	static int noOfElements;
 	JTextField[] elements;
+	static HomeFrame home;
 
 	/**
 	 * Launch the application.
@@ -29,7 +30,7 @@ public class ElementWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ElementWindow window = new ElementWindow(noOfElements);
+					ElementWindow window = new ElementWindow(noOfElements,home);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,8 +43,9 @@ public class ElementWindow {
 	 * Create the application.
 	 */
 
-	public ElementWindow(int n) {
+	public ElementWindow(int n, HomeFrame h ) {
 		noOfElements=n;
+		home=h;
 
 		initialize();
 	}
@@ -74,10 +76,10 @@ public class ElementWindow {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(int i=0;i<noOfElements;i++) {
-					JTextField t =(JTextField)elements[i].getComponent(2);
-					
-				}
+				//for(int i=0;i<noOfElements;i++) {
+				//	JTextField t =(JTextField)elements[i].getComponent(2);	
+				//}
+				home.displayQueue(noOfElements,elements);
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
@@ -101,6 +103,7 @@ public class ElementWindow {
 			elements[i]=textField;
 			
 		}
+		panel_1.revalidate();
 	
 
 
