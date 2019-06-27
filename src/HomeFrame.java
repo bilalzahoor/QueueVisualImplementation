@@ -30,6 +30,10 @@ import java.awt.ComponentOrientation;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+import java.awt.Dimension;
 
 public class HomeFrame {
 
@@ -192,26 +196,42 @@ public class HomeFrame {
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		panelQueue.add(horizontalStrut);
-		for(int i=0;i<n;i++) {
+		for(int i=0;i<capacity;i++) {
 		JPanel panelElement = new JPanel();
 		panelElement.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		panelQueue.add(panelElement);
 		panelElement.setLayout(new BoxLayout(panelElement, BoxLayout.Y_AXIS));
 		
 		JLabel lblIndex = new JLabel(""+i);
+		lblIndex.setMaximumSize(new Dimension(50, 15));
+		lblIndex.setMinimumSize(new Dimension(50, 15));
+		lblIndex.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblIndex);
+
+		JLabel lblElement ;
+		if(i<n)
+		{
+		lblElement = new JLabel(""+e[i].getText());
+		}
+		else
+			lblElement = new JLabel("NULL");
 		
-		JLabel lblElement = new JLabel(""+e[i].getText());
-		lblElement.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblElement.setBorder(new MatteBorder(3, 0, 3, 0, (Color) Color.RED));
+		lblElement.setMaximumSize(new Dimension(50, 15));
+		lblElement.setMinimumSize(new Dimension(50, 15));
+		lblElement.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblElement);
-		JLabel lblPointer = new JLabel("   ");
+		JLabel lblPointer = new JLabel("");
 		if(i==0)
 			lblPointer.setText("Front");
 		else if(i==(n-1))
 			lblPointer.setText("Rear");
+		lblPointer.setMaximumSize(new Dimension(50, 15));
+		lblPointer.setMinimumSize(new Dimension(50, 15));
+		lblPointer.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblPointer);
-		Component horizontalStrut1 = Box.createHorizontalStrut(20);
-		panelQueue.add(horizontalStrut1);
+	//	Component horizontalStrut1 = Box.createHorizontalStrut(20);
+		//panelQueue.add(horizontalStrut1);
 		panelQueue.revalidate();
 		
 		
