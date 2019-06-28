@@ -34,6 +34,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 public class HomeFrame {
 
@@ -45,6 +46,10 @@ public class HomeFrame {
 	static HomeFrame homeWin;
 	JPanel panelQueue;
 	JTextField[] elements;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_3;
+	private JTextField textField_2;
 	/**
 	 * Launch the application.
 	 */
@@ -93,7 +98,7 @@ public class HomeFrame {
 		visualPanel.add(lblEmpty);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.DARK_GRAY);
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(12, 151, 1023, 354);
 		visualPanel.add(panel);
 		panel.setLayout(null);
@@ -113,8 +118,54 @@ public class HomeFrame {
 		JLabel lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
 		lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 62));
 		panel_1.add(lblQueueIsEmpty);
-		lblQueueIsEmpty.setVisible(true);
 		
+		Panel panel_2 = new Panel();
+		panel_2.setBounds(807, 24, 206, 204);
+		panel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblCapacity = new JLabel("Capacity:");
+		lblCapacity.setBackground(Color.WHITE);
+		lblCapacity.setForeground(Color.BLACK);
+		lblCapacity.setBounds(10, 11, 52, 14);
+		panel_2.add(lblCapacity);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setBounds(86, 8, 86, 20);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSize = new JLabel("Size:");
+		lblSize.setBounds(10, 53, 46, 14);
+		panel_2.add(lblSize);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setBounds(86, 50, 86, 20);
+		panel_2.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblFront = new JLabel("Front:");
+		lblFront.setBounds(10, 95, 46, 14);
+		panel_2.add(lblFront);
+		
+		
+		JLabel lblRear = new JLabel("Rear:");
+		lblRear.setBounds(10, 133, 46, 14);
+		panel_2.add(lblRear);
+		
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setBounds(86, 130, 86, 20);
+		panel_2.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setBounds(86, 92, 86, 20);
+		panel_2.add(textField_2);
+		textField_2.setColumns(10);
 		
 		capacity= 5;
 		Panel controlPanel = new Panel();
@@ -127,7 +178,7 @@ public class HomeFrame {
 		comboBox.setBounds(12, 142, 241, 32);
 		controlPanel.add(comboBox);
 		comboBox.setForeground(Color.BLACK);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Simple Queue", "Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
 		comboBox.setBackground(Color.decode("#bdc3c7"));
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
@@ -207,7 +258,7 @@ public class HomeFrame {
 		lblIndex.setMinimumSize(new Dimension(50, 15));
 		lblIndex.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblIndex);
-
+		
 		JLabel lblElement ;
 		if(i<n)
 		{
@@ -224,6 +275,7 @@ public class HomeFrame {
 		JLabel lblPointer = new JLabel("");
 		if(i==0)
 			lblPointer.setText("Front");
+		
 		else if(i==(n-1))
 			lblPointer.setText("Rear");
 		lblPointer.setMaximumSize(new Dimension(50, 15));
