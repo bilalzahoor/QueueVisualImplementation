@@ -46,10 +46,10 @@ public class HomeFrame {
 	static HomeFrame homeWin;
 	JPanel panelQueue;
 	JTextField[] elements;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_2;
+	private JTextField textFieldCapacity;
+	private JTextField textFieldSize;
+	private JTextField textFieldRear;
+	private JTextField textFieldFront;
 	/**
 	 * Launch the application.
 	 */
@@ -130,42 +130,42 @@ public class HomeFrame {
 		lblCapacity.setBounds(10, 11, 52, 14);
 		panel_2.add(lblCapacity);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(86, 8, 86, 20);
-		panel_2.add(textField);
-		textField.setColumns(10);
+		textFieldCapacity = new JTextField();
+		textFieldCapacity.setEditable(false);
+		textFieldCapacity.setBounds(86, 8, 86, 20);
+		panel_2.add(textFieldCapacity);
+		textFieldCapacity.setColumns(10);
 		
 		JLabel lblSize = new JLabel("Size:");
 		lblSize.setBounds(10, 53, 46, 14);
 		panel_2.add(lblSize);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(86, 50, 86, 20);
-		panel_2.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldSize = new JTextField();
+		textFieldSize.setEditable(false);
+		textFieldSize.setBounds(86, 50, 86, 20);
+		panel_2.add(textFieldSize);
+		textFieldSize.setColumns(10);
 		
 		JLabel lblFront = new JLabel("Front:");
 		lblFront.setBounds(10, 95, 46, 14);
 		panel_2.add(lblFront);
+		
+		textFieldFront = new JTextField();
+		textFieldFront.setEditable(false);
+		textFieldFront.setBounds(86, 92, 86, 20);
+		panel_2.add(textFieldFront);
+		textFieldFront.setColumns(10);
 		
 		
 		JLabel lblRear = new JLabel("Rear:");
 		lblRear.setBounds(10, 133, 46, 14);
 		panel_2.add(lblRear);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(86, 130, 86, 20);
-		panel_2.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(86, 92, 86, 20);
-		panel_2.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldRear = new JTextField();
+		textFieldRear.setEditable(false);
+		textFieldRear.setBounds(86, 130, 86, 20);
+		panel_2.add(textFieldRear);
+		textFieldRear.setColumns(10);
 		
 		capacity= 5;
 		Panel controlPanel = new Panel();
@@ -284,6 +284,10 @@ public class HomeFrame {
 		panelElement.add(lblPointer);
 	//	Component horizontalStrut1 = Box.createHorizontalStrut(20);
 		//panelQueue.add(horizontalStrut1);
+		textFieldCapacity.setText(""+capacity);
+		textFieldSize.setText(""+n);
+		textFieldFront.setText(""+0);
+		textFieldRear.setText(""+(n-1));
 		panelQueue.revalidate();
 		
 		
