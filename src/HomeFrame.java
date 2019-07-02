@@ -48,12 +48,14 @@ public class HomeFrame {
 	JLabel lblEmpty;
 	static HomeFrame homeWin;
 	JPanel panelQueue;
-	JTextField[] elements;
+	JPanel[] elements=null;
 	private JTextField textFieldCapacity;
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
 	private JTextField textFieldFront;
 	private JTextField txtElement;
+	private int rear;
+	private int front;
 	/**
 	 * Launch the application.
 	 */
@@ -192,6 +194,23 @@ public class HomeFrame {
 		  JButton btnInsert = new JButton("Insert.");
 		  btnInsert.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent arg0) {
+		  		if(rear==(capacity-1)) {
+		  			
+		  			
+		  		}
+		  		else {
+		  			panel_3.setVisible(false);
+		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+		  			lbl.setText(txtElement.getText());
+		  			lbl =(JLabel)elements[rear+1].getComponent(2);
+		  			lbl.setText("Rear");
+		  			lbl =(JLabel)elements[rear].getComponent(2);
+		  			lbl.setText(" ");
+		  			rear=rear+1;
+		  			textFieldRear.setText(""+rear);
+		  			
+		  		}
+		  		
 		  	
 		  	}
 		  });
@@ -204,7 +223,6 @@ public class HomeFrame {
 		  lblQueueIsFull.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsFull.setFont(new Font("Tahoma", Font.BOLD, 60));
 		  lblQueueIsFull.setVisible(false);
-		  ;
 		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
@@ -263,8 +281,16 @@ public class HomeFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
-			
-				panel_3.setVisible(true);
+				
+				if(elements==null) {
+		  			
+		  			
+		  		}
+		  		else{
+		  			
+		  			panel_3.setVisible(true);
+		  		}
+				
 			}
 		 });
 		btnNewButton_1.setBackground(Color.decode("#FAF0F6"));
@@ -287,9 +313,9 @@ public class HomeFrame {
 	}
 	void displayQueue(int n, JTextField[] e) {
 		
-		//elements=new JTextField[n];
+		elements=new JPanel[capacity];
 		
-		
+		//elements
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		panelQueue.add(horizontalStrut);
 		for(int i=0;i<capacity;i++) {
@@ -327,11 +353,14 @@ public class HomeFrame {
 		lblPointer.setMinimumSize(new Dimension(50, 15));
 		lblPointer.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblPointer);
+		elements[i]=panelElement;
 	//	Component horizontalStrut1 = Box.createHorizontalStrut(20);
 		//panelQueue.add(horizontalStrut1);
 		textFieldCapacity.setText(""+capacity);
 		textFieldSize.setText(""+n);
 		textFieldFront.setText(""+0);
+		front=0;
+		rear=n-1;
 		textFieldRear.setText(""+(n-1));
 		panelQueue.revalidate();
 		
