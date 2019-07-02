@@ -66,7 +66,7 @@ public class ElementWindow {
 		
 		Panel panel = new Panel();
 		scrollPane_1.setViewportView(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	
 		
 
@@ -81,6 +81,7 @@ public class ElementWindow {
 				//for(int i=0;i<noOfElements;i++) {
 				//	JTextField t =(JTextField)elements[i].getComponent(2);	
 				//}
+				
 				home.displayQueue(noOfElements,elements);
 			frame.setVisible(false);
 			}

@@ -21,6 +21,8 @@ import javax.swing.JTable;
 import java.awt.Panel;
 import javax.swing.BoxLayout;
 import java.awt.Component;
+
+import javax.swing.AbstractButton;
 import javax.swing.Box;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -35,6 +37,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.SystemColor;
 
 public class HomeFrame {
 
@@ -50,6 +53,7 @@ public class HomeFrame {
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
 	private JTextField textFieldFront;
+	private JTextField txtElement;
 	/**
 	 * Launch the application.
 	 */
@@ -103,22 +107,6 @@ public class HomeFrame {
 		visualPanel.add(panel);
 		panel.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(107, 114, 549, 157);
-		panel.add(scrollPane);
-		
-		JPanel panel_1 = new JPanel();
-		scrollPane.setViewportView(panel_1);
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
-		
-		 panelQueue = new JPanel();
-		panel_1.add(panelQueue);
-		panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
-		
-		JLabel lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
-		lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 62));
-		panel_1.add(lblQueueIsEmpty);
-		
 		Panel panel_2 = new Panel();
 		panel_2.setBounds(807, 24, 206, 204);
 		panel.add(panel_2);
@@ -166,7 +154,57 @@ public class HomeFrame {
 		textFieldRear.setBounds(86, 130, 86, 20);
 		panel_2.add(textFieldRear);
 		textFieldRear.setColumns(10);
-		
+		 
+		 JScrollPane scrollPane = new JScrollPane();
+		 scrollPane.setBounds(89, 24, 712, 204);
+		 panel.add(scrollPane);
+		 
+		 JPanel panel_1 = new JPanel();
+		 scrollPane.setViewportView(panel_1);
+		 panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
+		 
+		  panelQueue = new JPanel();
+		  panel_1.add(panelQueue);
+		  panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
+		  
+		  JLabel lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		  panel_1.add(lblQueueIsEmpty);
+		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 82));
+		  
+		  Panel panel_3 = new Panel();
+		  panel_3.setBounds(133, 246, 635, 98);
+		  panel.add(panel_3);
+		  panel_3.setBackground(SystemColor.controlHighlight);
+		  panel_3.setLayout(null);
+		  panel_3.setVisible(false);
+		  
+		  JLabel lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
+		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		  lblEnterTheElement.setBounds(12, 13, 244, 39);
+		  panel_3.add(lblEnterTheElement);
+		  
+		  txtElement = new JTextField();
+		  txtElement.setToolTipText("Element.");
+		  txtElement.setBounds(392, 22, 116, 22);
+		  panel_3.add(txtElement);
+		  txtElement.setColumns(10);
+		  
+		  JButton btnInsert = new JButton("Insert.");
+		  btnInsert.addActionListener(new ActionListener() {
+		  	public void actionPerformed(ActionEvent arg0) {
+		  	
+		  	}
+		  });
+		  btnInsert.setBounds(392, 60, 116, 25);
+		  panel_3.add(btnInsert);
+		  
+		  JLabel lblQueueIsFull = new JLabel("Queue is Full.");
+		  lblQueueIsFull.setBounds(0, 0, 635, 98);
+		  panel_3.add(lblQueueIsFull);
+		  lblQueueIsFull.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblQueueIsFull.setFont(new Font("Tahoma", Font.BOLD, 60));
+		  lblQueueIsFull.setVisible(false);
+		  ;
 		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
@@ -222,6 +260,13 @@ public class HomeFrame {
 		btnDst.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		JButton btnNewButton_1 = new JButton("Enqueue");
+		btnNewButton_1.addActionListener(new ActionListener() {
+		
+			public void actionPerformed(ActionEvent arg0) {
+			
+				panel_3.setVisible(true);
+			}
+		 });
 		btnNewButton_1.setBackground(Color.decode("#FAF0F6"));
 		btnNewButton_1.setBounds(12, 601, 103, 28);
 		controlPanel.add(btnNewButton_1);
