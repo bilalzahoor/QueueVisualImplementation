@@ -80,6 +80,7 @@ public class HomeFrame {
 	 */
 	public HomeFrame() {
 		initialize();
+		front=-1;
 	}
 
 	/**
@@ -200,6 +201,9 @@ public class HomeFrame {
 		  			
 		  			
 		  		}
+		  		else if(rear==-1){
+		  			
+		  		}
 		  		else {
 		  			panel_3.setVisible(false);
 		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
@@ -297,6 +301,40 @@ public class HomeFrame {
 		btnNewButton_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
 		btnNewButton_2 = new JButton("Dequeue");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(front==-1)
+				{
+					
+				}
+				else {
+
+		  			
+		  			JLabel lbl=(JLabel)elements[front].getComponent(1);
+		  			lbl.setText("NULL");
+		  			lbl=(JLabel)elements[front].getComponent(2);
+		  			lbl.setText(" ");
+		  			if(front!=rear) {
+		  				lbl=(JLabel)elements[front+1].getComponent(2);
+		  				lbl.setText("Front");
+		  				front=front+1;
+		  				textFieldFront.setText(""+front);
+		  			}
+		  			else {
+		  			front=-1;
+		  			rear=-1;
+		  			textFieldFront.setText(""+front);
+		  			textFieldRear.setText(""+rear);
+		  			}
+		  			
+		  			
+					
+				}
+				
+				
+			}
+		});
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.setBackground(Color.decode("#FAF0F6"));
 		btnNewButton_2.setBounds(150, 601, 103, 28);
