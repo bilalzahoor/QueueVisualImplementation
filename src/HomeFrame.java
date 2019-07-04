@@ -46,6 +46,8 @@ public class HomeFrame {
 	public int capacity;
 	JComboBox cmbCapacity;
 	JLabel lblEmpty;
+	JButton btnNewButton_1;
+	JButton btnNewButton_2;
 	static HomeFrame homeWin;
 	JPanel panelQueue;
 	JPanel[] elements=null;
@@ -216,13 +218,6 @@ public class HomeFrame {
 		  });
 		  btnInsert.setBounds(392, 60, 116, 25);
 		  panel_3.add(btnInsert);
-		  
-		  JLabel lblQueueIsFull = new JLabel("Queue is Full.");
-		  lblQueueIsFull.setBounds(0, 0, 635, 98);
-		  panel_3.add(lblQueueIsFull);
-		  lblQueueIsFull.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblQueueIsFull.setFont(new Font("Tahoma", Font.BOLD, 60));
-		  lblQueueIsFull.setVisible(false);
 		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
@@ -246,6 +241,8 @@ public class HomeFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				CreateQueueFrame win = new CreateQueueFrame(homeWin);
 				win.frame.setVisible(true);
+				btnNewButton_1.setEnabled(true);
+				btnNewButton_2.setEnabled(true);
 				btnDst.setEnabled(true);
 				lblQueueIsEmpty.setVisible(false);
 			}
@@ -277,7 +274,8 @@ public class HomeFrame {
 		btnDst.setEnabled(false);
 		btnDst.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
-		JButton btnNewButton_1 = new JButton("Enqueue");
+		btnNewButton_1 = new JButton("Enqueue");
+		btnNewButton_1.setEnabled(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
@@ -298,7 +296,8 @@ public class HomeFrame {
 		controlPanel.add(btnNewButton_1);
 		btnNewButton_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
-		JButton btnNewButton_2 = new JButton("Dequeue");
+		btnNewButton_2 = new JButton("Dequeue");
+		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.setBackground(Color.decode("#FAF0F6"));
 		btnNewButton_2.setBounds(150, 601, 103, 28);
 		controlPanel.add(btnNewButton_2);
