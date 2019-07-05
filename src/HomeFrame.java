@@ -345,8 +345,8 @@ public class HomeFrame {
 				lblQueueDestroyed.setVisible(true);
 				lblQueueIsEmpty_1.setVisible(false);
 				lblQueueIsFull.setVisible(false);
-				comboBox.setEnabled(true);
-				cmbCapacity.setEnabled(true);
+				comboBox.setEnabled(false);
+				cmbCapacity.setEnabled(false);
 				btnDst.setEnabled(false);
 				panel_3.setVisible(false);
 			}
