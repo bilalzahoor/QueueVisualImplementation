@@ -302,6 +302,7 @@ public class HomeFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				CreateQueueFrame win = new CreateQueueFrame(homeWin);
 				win.frame.setVisible(true);
+				panelQueue.setVisible(true);
 				btnCrt.setEnabled(false);
 				cmbCapacity.setEnabled(false);
 				comboBox.setEnabled(false);
@@ -340,7 +341,7 @@ public class HomeFrame {
 				textFieldRear.setText("");
 				btnNewButton_1.setEnabled(false);
 				btnNewButton_2.setEnabled(false);
-				btnCrt.setEnabled(true);
+				btnCrt.setEnabled(false);
 				lblQueueDestroyed.setVisible(true);
 				lblQueueIsEmpty_1.setVisible(false);
 				lblQueueIsFull.setVisible(false);
