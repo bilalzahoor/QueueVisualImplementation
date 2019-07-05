@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.Component;
+import javax.swing.border.BevelBorder;
+import java.awt.Font;
 
 public class CreateQueueFrame {
 
@@ -65,6 +68,9 @@ public class CreateQueueFrame {
 		frame.getContentPane().add(lblCreateError);
 		
 		JButton btnCreate = new JButton("Create");
+		btnCreate.setFont(new Font("Sitka Small", Font.BOLD, 15));
+		btnCreate.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
+		btnCreate.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnCreate.setBackground(SystemColor.activeCaption);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -38,6 +38,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
+import javax.swing.border.TitledBorder;
 
 public class HomeFrame {
 
@@ -46,8 +47,15 @@ public class HomeFrame {
 	public int capacity;
 	JComboBox cmbCapacity;
 	JLabel lblEmpty;
+	JLabel lblElement;
 	JButton btnNewButton_1;
 	JButton btnNewButton_2;
+	JLabel lblQueueIsEmpty_1;
+	JLabel lblQueueIsFull;
+	JLabel lblQueueDestroyed;
+	JButton btnCrt;
+	JLabel lblQueueIsEmpty;
+	JLabel lblEnterTheElement;
 	static HomeFrame homeWin;
 	JPanel panelQueue;
 	JPanel[] elements=null;
@@ -100,27 +108,29 @@ public class HomeFrame {
 		visualPanel.setLayout(null);
 		
 		lblEmpty = new JLabel("DISPLAY PANEL");
-		lblEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmpty.setBounds(12, 13, 1023, 85);
+		lblEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmpty.setForeground(Color.decode("#ffbf00"));
 		lblEmpty.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		visualPanel.add(lblEmpty);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(12, 151, 1023, 339);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(12, 151, 1023, 354);
 		visualPanel.add(panel);
 		panel.setLayout(null);
 		
 		Panel panel_2 = new Panel();
+		panel_2.setBackground(SystemColor.controlHighlight);
 		panel_2.setBounds(807, 24, 206, 204);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblCapacity = new JLabel("Capacity:");
+		lblCapacity.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCapacity.setBackground(Color.WHITE);
-		lblCapacity.setForeground(Color.BLACK);
-		lblCapacity.setBounds(10, 11, 52, 14);
+		lblCapacity.setForeground(SystemColor.controlDkShadow);
+		lblCapacity.setBounds(10, 11, 64, 14);
 		panel_2.add(lblCapacity);
 		
 		textFieldCapacity = new JTextField();
@@ -130,6 +140,8 @@ public class HomeFrame {
 		textFieldCapacity.setColumns(10);
 		
 		JLabel lblSize = new JLabel("Size:");
+		lblSize.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblSize.setForeground(SystemColor.controlDkShadow);
 		lblSize.setBounds(10, 53, 46, 14);
 		panel_2.add(lblSize);
 		
@@ -140,6 +152,8 @@ public class HomeFrame {
 		textFieldSize.setColumns(10);
 		
 		JLabel lblFront = new JLabel("Front:");
+		lblFront.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblFront.setForeground(SystemColor.controlDkShadow);
 		lblFront.setBounds(10, 95, 46, 14);
 		panel_2.add(lblFront);
 		
@@ -151,6 +165,8 @@ public class HomeFrame {
 		
 		
 		JLabel lblRear = new JLabel("Rear:");
+		lblRear.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblRear.setForeground(SystemColor.controlDkShadow);
 		lblRear.setBounds(10, 133, 46, 14);
 		panel_2.add(lblRear);
 		
@@ -171,38 +187,40 @@ public class HomeFrame {
 		  panelQueue = new JPanel();
 		  panel_1.add(panelQueue);
 		  panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
+		  panelQueue.setVisible(true);
 		  
-		  JLabel lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		  lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblQueueIsEmpty.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "", TitledBorder.LEADING, TitledBorder.BELOW_BOTTOM, null, null));
 		  panel_1.add(lblQueueIsEmpty);
-		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 82));
+		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 81));
 		  
 		  Panel panel_3 = new Panel();
-		  panel_3.setBounds(133, 246, 635, 98);
+		  panel_3.setBounds(142, 234, 515, 98);
 		  panel.add(panel_3);
 		  panel_3.setBackground(SystemColor.controlHighlight);
 		  panel_3.setLayout(null);
 		  panel_3.setVisible(false);
 		  
-		  JLabel lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
-		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		  lblEnterTheElement.setBounds(12, 13, 244, 39);
-		  panel_3.add(lblEnterTheElement);
-		  
 		  txtElement = new JTextField();
-		  txtElement.setToolTipText("Element.");
-		  txtElement.setBounds(392, 22, 116, 22);
+		  txtElement.setBounds(377, 25, 116, 22);
 		  panel_3.add(txtElement);
 		  txtElement.setColumns(10);
+		 
 		  
 		  JButton btnInsert = new JButton("Insert.");
+		  btnInsert.setFont(new Font("Sitka Text", Font.BOLD, 16));
+		  btnInsert.setBackground(SystemColor.activeCaption);
+		  btnInsert.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
+		  btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
 		  btnInsert.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent arg0) {
 		  		if(rear==(capacity-1)) {
 		  			
-		  			
+		  			lblQueueIsFull.setVisible(true);
 		  		}
 		  		else if(rear==-1){
-		  			
+		  			lblQueueIsEmpty_1.setVisible(true);
 		  		}
 		  		else {
 		  			panel_3.setVisible(false);
@@ -216,12 +234,50 @@ public class HomeFrame {
 		  			textFieldRear.setText(""+rear);
 		  			
 		  		}
-		  		
-		  	
 		  	}
 		  });
-		  btnInsert.setBounds(392, 60, 116, 25);
+		  btnInsert.setBounds(377, 60, 116, 25);
 		  panel_3.add(btnInsert);
+		  
+		  lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
+		  lblEnterTheElement.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblEnterTheElement.setBounds(46, 25, 247, 23);
+		  panel_3.add(lblEnterTheElement);
+		  lblEnterTheElement.setBackground(SystemColor.controlHighlight);
+		  lblEnterTheElement.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "", TitledBorder.LEADING, TitledBorder.BELOW_BOTTOM, null, new Color(0, 0, 0)));
+		  lblEnterTheElement.setForeground(SystemColor.controlDkShadow);
+		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		  
+		  Panel panel_4 = new Panel();
+		  panel_4.setBounds(0, 496, 1047, 225);
+		  visualPanel.add(panel_4);
+		  panel_4.setLayout(null);
+		  
+		  lblQueueIsEmpty_1 = new JLabel("Queue Is Empty!");
+		  lblQueueIsEmpty_1.setBounds(0, 0, 1047, 70);
+		  panel_4.add(lblQueueIsEmpty_1);
+		  lblQueueIsEmpty_1.setBackground(Color.LIGHT_GRAY);
+		  lblQueueIsEmpty_1.setForeground(new Color(255, 0, 0));
+		  lblQueueIsEmpty_1.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblQueueIsEmpty_1.setFont(new Font("Tahoma", Font.BOLD, 59));
+		  lblQueueIsEmpty_1.setVisible(false);
+		  
+		  lblQueueIsFull = new JLabel("Queue Is Full!");
+		  lblQueueIsFull.setBounds(0, 76, 1047, 78);
+		  panel_4.add(lblQueueIsFull);
+		  lblQueueIsFull.setForeground(new Color(255, 0, 0));
+		  lblQueueIsFull.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblQueueIsFull.setFont(new Font("Tahoma", Font.BOLD, 59));
+		  lblQueueIsFull.setVisible(false);
+		  
+		  lblQueueDestroyed = new JLabel("Queue Destroyed!");
+		  lblQueueDestroyed.setFont(new Font("Tahoma", Font.BOLD, 64));
+		  lblQueueDestroyed.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblQueueDestroyed.setForeground(new Color(255, 0, 0));
+		  lblQueueDestroyed.setBounds(0, 145, 1047, 78);
+		  lblQueueDestroyed.setVisible(false);
+		  panel_4.add(lblQueueDestroyed);
+		  lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
@@ -237,18 +293,18 @@ public class HomeFrame {
 		comboBox.setBackground(Color.decode("#bdc3c7"));
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
-		JButton btnCrt = new JButton("Create");
-		btnCrt.setBackground(Color.decode("#FAF0F6"));
+		btnCrt = new JButton("Create");
+		btnCrt.setFont(new Font("Sitka Heading", Font.BOLD, 15));
+		btnCrt.setBackground(SystemColor.inactiveCaption);
 		btnCrt.setBounds(12, 496, 103, 28);
-		btnCrt.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnCrt.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		btnCrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CreateQueueFrame win = new CreateQueueFrame(homeWin);
 				win.frame.setVisible(true);
-				btnNewButton_1.setEnabled(true);
-				btnNewButton_2.setEnabled(true);
-				btnDst.setEnabled(true);
-				lblQueueIsEmpty.setVisible(false);
+				btnCrt.setEnabled(false);
+				cmbCapacity.setEnabled(false);
+				comboBox.setEnabled(false);
 			}
 		});
 		
@@ -272,41 +328,65 @@ public class HomeFrame {
 		controlPanel.add(btnCrt);
 	//	displayQueue(10);
 		btnDst = new JButton("Destroy");
-		btnDst.setBackground(Color.decode("#FAF0F6"));
+		btnDst.setFont(new Font("Sitka Heading", Font.BOLD, 15));
+		btnDst.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnDst.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				panelQueue.setVisible(false);
+				textFieldCapacity.setText("");
+				textFieldSize.setText("");
+				textFieldFront.setText("");
+				textFieldRear.setText("");
+				btnNewButton_1.setEnabled(false);
+				btnNewButton_2.setEnabled(false);
+				btnCrt.setEnabled(true);
+				lblQueueDestroyed.setVisible(true);
+				lblQueueIsEmpty_1.setVisible(false);
+				lblQueueIsFull.setVisible(false);
+				comboBox.setEnabled(true);
+				cmbCapacity.setEnabled(true);
+				btnDst.setEnabled(false);
+				panel_3.setVisible(false);
+			}
+		});
+		btnDst.setBackground(SystemColor.activeCaption);
 		btnDst.setBounds(150, 496, 103, 28);
 		controlPanel.add(btnDst);
 		btnDst.setEnabled(false);
-		btnDst.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnDst.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		
 		btnNewButton_1 = new JButton("Enqueue");
+		btnNewButton_1.setFont(new Font("Sitka Heading", Font.BOLD, 15));
 		btnNewButton_1.setEnabled(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(elements==null) {
-		  			
-		  			
-		  		}
-		  		else{
-		  			
-		  			panel_3.setVisible(true);
-		  		}
 				
+					
+		  		}
+		  		else {
+		  			panel_3.setVisible(true);
+		  			
+		  			
+		  		}
 			}
 		 });
-		btnNewButton_1.setBackground(Color.decode("#FAF0F6"));
+		btnNewButton_1.setBackground(SystemColor.activeCaption);
 		btnNewButton_1.setBounds(12, 601, 103, 28);
 		controlPanel.add(btnNewButton_1);
-		btnNewButton_1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		
 		btnNewButton_2 = new JButton("Dequeue");
+		btnNewButton_2.setFont(new Font("Sitka Heading", Font.BOLD, 15));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(front==-1)
 				{
-					
+					lblQueueIsEmpty_1.setVisible(true);
 				}
 				else {
 
@@ -336,10 +416,10 @@ public class HomeFrame {
 			}
 		});
 		btnNewButton_2.setEnabled(false);
-		btnNewButton_2.setBackground(Color.decode("#FAF0F6"));
+		btnNewButton_2.setBackground(SystemColor.activeCaption);
 		btnNewButton_2.setBounds(150, 601, 103, 28);
 		controlPanel.add(btnNewButton_2);
-		btnNewButton_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnNewButton_2.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		
 		JLabel lblNewLabel = new JLabel("Toolkit");
 		lblNewLabel.setForeground(Color.decode("#e67e22"));
@@ -367,7 +447,7 @@ public class HomeFrame {
 		lblIndex.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblIndex);
 		
-		JLabel lblElement ;
+		JLabel lblElement;
 		if(i<n)
 		{
 		lblElement = new JLabel(""+e[i].getText());
@@ -376,8 +456,9 @@ public class HomeFrame {
 			lblElement = new JLabel("NULL");
 		
 		lblElement.setBorder(new MatteBorder(3, 0, 3, 0, (Color) Color.RED));
-		lblElement.setMaximumSize(new Dimension(50, 15));
-		lblElement.setMinimumSize(new Dimension(50, 15));
+		lblElement.setMaximumSize(new Dimension(50, 60));
+		lblElement.setMinimumSize(new Dimension(50, 60));
+		lblElement.setForeground(SystemColor.red);
 		lblElement.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblElement);
 		JLabel lblPointer = new JLabel("");
@@ -389,6 +470,7 @@ public class HomeFrame {
 		lblPointer.setMaximumSize(new Dimension(50, 15));
 		lblPointer.setMinimumSize(new Dimension(50, 15));
 		lblPointer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPointer.setForeground(SystemColor.BLUE);
 		panelElement.add(lblPointer);
 		elements[i]=panelElement;
 	//	Component horizontalStrut1 = Box.createHorizontalStrut(20);

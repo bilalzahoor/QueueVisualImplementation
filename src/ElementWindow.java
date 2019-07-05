@@ -17,6 +17,9 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import net.miginfocom.swing.MigLayout;
 
 public class ElementWindow {
 
@@ -24,6 +27,7 @@ public class ElementWindow {
 	private JTextField textField;
 	static int noOfElements;
 	JTextField[] elements;
+	JButton btnDst;
 	static HomeFrame home;
 	/**
 	 * Launch the application.
@@ -45,7 +49,7 @@ public class ElementWindow {
 	 * Create the application.
 	 */
 
-	public ElementWindow(int n, HomeFrame h ) {
+	public ElementWindow(int n, HomeFrame h) {
 		noOfElements=n;
 		home=h;
 
@@ -57,32 +61,43 @@ public class ElementWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 529, 285);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		
+		frame.isMaximumSizeSet();
+		frame.getContentPane().setLayout(null);
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(7, 7, 497, 194);
 		frame.getContentPane().add(scrollPane_1);
 		
 		Panel panel = new Panel();
 		scrollPane_1.setViewportView(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-	
 		
-
-		Panel panel_1 = new Panel();
-	
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
-		panel.add(panel_1);
-		JButton btnNewButton = new JButton("Create");
-		btnNewButton.addActionListener(new ActionListener() {
 			
+
+			Panel panel_1 = new Panel();
+			
+				panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
+				panel.add(panel_1);
+				panel_1.revalidate();
+		JButton btnNewButton = new JButton("Create");
+		btnNewButton.setBounds(179, 207, 141, 21);
+		btnNewButton.setBackground(SystemColor.activeCaption);
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
+		btnNewButton.setFont(new Font("Sitka Subheading", Font.BOLD, 15));
+		btnNewButton.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
 				//for(int i=0;i<noOfElements;i++) {
 				//	JTextField t =(JTextField)elements[i].getComponent(2);	
 				//}
-				
+				home.btnDst.setEnabled(true);
+				home.btnNewButton_1.setEnabled(true);
+				home.btnNewButton_2.setEnabled(true);
 				home.displayQueue(noOfElements,elements);
+				home.lblQueueIsEmpty.setVisible(false);
 			frame.setVisible(false);
 			}
 		});
@@ -107,7 +122,6 @@ public class ElementWindow {
 			elements[i]=textField;
 			
 		}
-		panel_1.revalidate();
 		
 
 	}
