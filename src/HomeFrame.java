@@ -215,13 +215,21 @@ public class HomeFrame {
 		  btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
 		  btnInsert.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent arg0) {
-		  		if(rear==(capacity-1)) {
+		  		
+		  	 if(rear==-1){
+		  			lblQueueIsEmpty_1.setVisible(false);
+		  			panel_3.setVisible(false);
 		  			
-		  			lblQueueIsFull.setVisible(true);
+		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+		  			lbl.setText(txtElement.getText());
+		  			lbl =(JLabel)elements[rear+1].getComponent(2);
+		  			lbl.setText("Front/Rear");
+		  			rear=rear+1;
+		  			front=front+1;
+		  			textFieldRear.setText(""+rear);
+		  			textFieldFront.setText(""+front);
 		  		}
-		  		else if(rear==-1){
-		  			lblQueueIsEmpty_1.setVisible(true);
-		  		}
+
 		  		else {
 		  			panel_3.setVisible(false);
 		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
@@ -229,7 +237,14 @@ public class HomeFrame {
 		  			lbl =(JLabel)elements[rear+1].getComponent(2);
 		  			lbl.setText("Rear");
 		  			lbl =(JLabel)elements[rear].getComponent(2);
-		  			lbl.setText(" ");
+		  			if(front == rear)
+		  			{
+		  				lbl.setText("Front");
+		  				
+		  			}
+		  			else
+		  			
+		  				lbl.setText(" ");
 		  			rear=rear+1;
 		  			textFieldRear.setText(""+rear);
 		  			
@@ -305,7 +320,8 @@ public class HomeFrame {
 				panelQueue.setVisible(true);
 				btnCrt.setEnabled(false);
 				cmbCapacity.setEnabled(false);
-				comboBox.setEnabled(false);
+				comboBox.setEnabled(false); 
+			
 			}
 		});
 		
@@ -334,7 +350,8 @@ public class HomeFrame {
 		btnDst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				panelQueue.setVisible(false);
+				//panelQueue.setVisible(false);
+				elements=null;
 				textFieldCapacity.setText("");
 				textFieldSize.setText("");
 				textFieldFront.setText("");
@@ -349,6 +366,7 @@ public class HomeFrame {
 				cmbCapacity.setEnabled(false);
 				btnDst.setEnabled(false);
 				panel_3.setVisible(false);
+				
 			}
 		});
 		btnDst.setBackground(SystemColor.activeCaption);
@@ -364,11 +382,11 @@ public class HomeFrame {
 		
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(elements==null) {
-				
-					
+				if(rear==(capacity-1)) {
+		  			
+		  			lblQueueIsFull.setVisible(true);
 		  		}
-		  		else {
+				else {
 		  			panel_3.setVisible(true);
 		  			
 		  			
