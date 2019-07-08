@@ -50,15 +50,15 @@ public class HomeFrame {
 	JLabel lblElement;
 	JButton btnNewButton_1;
 	JButton btnNewButton_2;
-	JLabel lblQueueIsEmpty_1;
-	JLabel lblQueueIsFull;
-	JLabel lblQueueDestroyed;
 	JButton btnCrt;
 	JLabel lblQueueIsEmpty;
 	JLabel lblEnterTheElement;
+	JLabel lblIndex;
+	JLabel lblPointer;
 	static HomeFrame homeWin;
 	JPanel panelQueue;
 	JPanel[] elements=null;
+	JPanel panelElement;
 	private JTextField textFieldCapacity;
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
@@ -66,6 +66,7 @@ public class HomeFrame {
 	private JTextField txtElement;
 	private int rear;
 	private int front;
+	private JLabel lblError;
 	/**
 	 * Launch the application.
 	 */
@@ -196,7 +197,7 @@ public class HomeFrame {
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 81));
 		  
 		  Panel panel_3 = new Panel();
-		  panel_3.setBounds(142, 234, 515, 98);
+		  panel_3.setBounds(184, 234, 515, 98);
 		  panel.add(panel_3);
 		  panel_3.setBackground(SystemColor.controlHighlight);
 		  panel_3.setLayout(null);
@@ -217,7 +218,7 @@ public class HomeFrame {
 		  	public void actionPerformed(ActionEvent arg0) {
 		  		
 		  	 if(rear==-1){
-		  			lblQueueIsEmpty_1.setVisible(false);
+		  			lblError.setVisible(false);
 		  			panel_3.setVisible(false);
 		  			
 		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
@@ -259,7 +260,6 @@ public class HomeFrame {
 		  lblEnterTheElement.setBounds(46, 25, 247, 23);
 		  panel_3.add(lblEnterTheElement);
 		  lblEnterTheElement.setBackground(SystemColor.controlHighlight);
-		  lblEnterTheElement.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "", TitledBorder.LEADING, TitledBorder.BELOW_BOTTOM, null, new Color(0, 0, 0)));
 		  lblEnterTheElement.setForeground(SystemColor.controlDkShadow);
 		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		  
@@ -268,31 +268,14 @@ public class HomeFrame {
 		  visualPanel.add(panel_4);
 		  panel_4.setLayout(null);
 		  
-		  lblQueueIsEmpty_1 = new JLabel("Queue Is Empty!");
-		  lblQueueIsEmpty_1.setBounds(0, 0, 1047, 70);
-		  panel_4.add(lblQueueIsEmpty_1);
-		  lblQueueIsEmpty_1.setBackground(Color.LIGHT_GRAY);
-		  lblQueueIsEmpty_1.setForeground(new Color(255, 0, 0));
-		  lblQueueIsEmpty_1.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblQueueIsEmpty_1.setFont(new Font("Tahoma", Font.BOLD, 59));
-		  lblQueueIsEmpty_1.setVisible(false);
-		  
-		  lblQueueIsFull = new JLabel("Queue Is Full!");
-		  lblQueueIsFull.setBounds(0, 76, 1047, 78);
-		  panel_4.add(lblQueueIsFull);
-		  lblQueueIsFull.setForeground(new Color(255, 0, 0));
-		  lblQueueIsFull.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblQueueIsFull.setFont(new Font("Tahoma", Font.BOLD, 59));
-		  lblQueueIsFull.setVisible(false);
-		  
-		  lblQueueDestroyed = new JLabel("Queue Destroyed!");
-		  lblQueueDestroyed.setFont(new Font("Tahoma", Font.BOLD, 64));
-		  lblQueueDestroyed.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblQueueDestroyed.setForeground(new Color(255, 0, 0));
-		  lblQueueDestroyed.setBounds(0, 145, 1047, 78);
-		  lblQueueDestroyed.setVisible(false);
-		  panel_4.add(lblQueueDestroyed);
-		  lblQueueIsEmpty_1.setVisible(false);
+		  lblError = new JLabel("");
+		  lblError.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblError.setFont(new Font("Sitka Heading", Font.BOLD, 66));
+		  lblError.setForeground(Color.RED);
+		  lblError.setBounds(0, 77, 1047, 82);
+		  lblError.setVisible(false);
+		  panel_4.add(lblError);
+		 // lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
@@ -350,8 +333,7 @@ public class HomeFrame {
 		btnDst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//panelQueue.setVisible(false);
-				elements=null;
+				lblElement.setText(null);
 				textFieldCapacity.setText("");
 				textFieldSize.setText("");
 				textFieldFront.setText("");
@@ -359,9 +341,9 @@ public class HomeFrame {
 				btnNewButton_1.setEnabled(false);
 				btnNewButton_2.setEnabled(false);
 				btnCrt.setEnabled(false);
-				lblQueueDestroyed.setVisible(true);
-				lblQueueIsEmpty_1.setVisible(false);
-				lblQueueIsFull.setVisible(false);
+				lblError.setVisible(true);
+				lblError.setText("Queue Destroyed");
+				//lblError.setVisible(false);
 				comboBox.setEnabled(false);
 				cmbCapacity.setEnabled(false);
 				btnDst.setEnabled(false);
@@ -384,10 +366,12 @@ public class HomeFrame {
 				
 				if(rear==(capacity-1)) {
 		  			
-		  			lblQueueIsFull.setVisible(true);
+		  			lblError.setVisible(true);
+		  			lblError.setText("Queue is Full");
 		  		}
 				else {
 		  			panel_3.setVisible(true);
+		  			txtElement.setText(null);
 		  			
 		  			
 		  		}
@@ -405,7 +389,8 @@ public class HomeFrame {
 				
 				if(front==-1)
 				{
-					lblQueueIsEmpty_1.setVisible(true);
+					lblError.setVisible(true);
+					lblError.setText("Queue is Empty");
 				}
 				else {
 
@@ -455,18 +440,18 @@ public class HomeFrame {
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		panelQueue.add(horizontalStrut);
 		for(int i=0;i<capacity;i++) {
-		JPanel panelElement = new JPanel();
+		panelElement = new JPanel();
 		panelElement.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		panelQueue.add(panelElement);
 		panelElement.setLayout(new BoxLayout(panelElement, BoxLayout.Y_AXIS));
 		
-		JLabel lblIndex = new JLabel(""+i);
+		lblIndex = new JLabel(""+i);
 		lblIndex.setMaximumSize(new Dimension(50, 15));
 		lblIndex.setMinimumSize(new Dimension(50, 15));
 		lblIndex.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblIndex);
 		
-		JLabel lblElement;
+		lblElement =new JLabel();
 		if(i<n)
 		{
 		lblElement = new JLabel(""+e[i].getText());
@@ -480,7 +465,7 @@ public class HomeFrame {
 		lblElement.setForeground(SystemColor.red);
 		lblElement.setHorizontalAlignment(SwingConstants.CENTER);
 		panelElement.add(lblElement);
-		JLabel lblPointer = new JLabel("");
+		lblPointer = new JLabel("");
 		if(i==0)
 			lblPointer.setText("Front");
 		

@@ -69,6 +69,7 @@ public class ElementWindow {
 		scrollPane_1.setBounds(7, 7, 497, 194);
 		frame.getContentPane().add(scrollPane_1);
 		
+		
 		Panel panel = new Panel();
 		scrollPane_1.setViewportView(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
