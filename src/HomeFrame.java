@@ -41,6 +41,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import javax.swing.border.TitledBorder;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class HomeFrame {
 
@@ -70,6 +72,8 @@ public class HomeFrame {
 	private int front;
 	private JLabel lblError;
 	private JLabel lblNumonly;
+	private String queueType;
+	private Panel panel_3;
 	/**
 	 * Launch the application.
 	 */
@@ -93,6 +97,7 @@ public class HomeFrame {
 	public HomeFrame() {
 		initialize();
 		front=-1;
+		queueType="SQ";
 	}
 
 	/**
@@ -199,7 +204,7 @@ public class HomeFrame {
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 81));
 		  
-		  Panel panel_3 = new Panel();
+		   panel_3 = new Panel();
 		  panel_3.setBounds(184, 234, 515, 98);
 		  panel.add(panel_3);
 		  panel_3.setBackground(SystemColor.controlHighlight);
@@ -207,25 +212,6 @@ public class HomeFrame {
 		  panel_3.setVisible(false);
 		  
 		  txtElement = new JTextField();
-		  txtElement.addKeyListener(new KeyAdapter() {
-				public void keyPressed(KeyEvent evt) {
-					char c = evt.getKeyChar();
-					
-					if(Character.isLetter(c)  ) {
-						txtElement.setEditable(false);
-						lblNumonly.setText("Enter Number Only!");
-					}
-						else
-						{
-							
-							txtElement.setEditable(true);
-						}
-
-				}
-				public void keyReleased(KeyEvent e) {
-					lblNumonly.setText("");
-				}
-			});
 		  txtElement.setBounds(377, 25, 116, 22);
 		  panel_3.add(txtElement);
 		  txtElement.setColumns(10);
@@ -314,10 +300,26 @@ public class HomeFrame {
 		controlPanel.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(12, 142, 241, 32);
-		controlPanel.add(comboBox);
 		comboBox.setForeground(Color.BLACK);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Simple Queue", "Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				String s =comboBox.getSelectedItem().toString();
+				if(s.compareTo("Doubly Ended Queue (DEqueue)")==0)
+				{
+			
+				queueType="DQ";
+				}
+		else if(s.compareTo("Simple Queue")==0) {
+			queueType="SQ";
+			
+		}
+				
+			}
+		});
+		comboBox.setBounds(12, 142, 241, 32);
+		controlPanel.add(comboBox);
+		
 		comboBox.setBackground(Color.decode("#bdc3c7"));
 		comboBox.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
@@ -365,6 +367,7 @@ public class HomeFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				lblQueueIsEmpty.setVisible(true);
 				panelQueue.removeAll();
+				elements=null;
 				textFieldCapacity.setText("");
 				textFieldSize.setText("");
 				textFieldFront.setText("");
@@ -393,18 +396,11 @@ public class HomeFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
+				if(queueType.compareTo("SQ")==0)
+					insertSimpleQueue();
+				else if(queueType.compareTo("DQ")==0)
+					insertDequeue();
 				
-				if(rear==(capacity-1)) {
-		  			
-		  			lblError.setVisible(true);
-		  			lblError.setText("Queue is Full!");
-		  		}
-				else {
-		  			panel_3.setVisible(true);
-		  			txtElement.setText(null);
-		  			
-		  			
-		  		}
 			}
 		 });
 		btnNewButton_1.setBackground(SystemColor.activeCaption);
@@ -522,5 +518,31 @@ public class HomeFrame {
 		
 		
 		
+	}
+	void insertSimpleQueue() {
+		if(rear==(capacity-1)) {
+  			
+  			lblError.setVisible(true);
+  			lblError.setText("Queue is Full!");
+  		}
+		else {
+  			panel_3.setVisible(true);
+  			txtElement.setText(null);
+  			
+  			
+  		}
+	}
+	void insertDequeue() {
+		if(rear==(capacity-1) && front==0) {
+  			
+  			lblError.setVisible(true);
+  			lblError.setText("Queue is Full!");
+  		}
+		else {
+  			panel_3.setVisible(true);
+  			txtElement.setText(null);
+  			
+  			
+  		}
 	}
 }

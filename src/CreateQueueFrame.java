@@ -97,12 +97,14 @@ public class CreateQueueFrame {
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				
 				if(textField.getText().trim().isEmpty())
 				{
 					lblNumOnly.setText("Field is Empty");
 				}
+				else {
 				
-				int c = Integer.parseInt(textField.getText().toString());
+				int c = Integer.parseInt(textField.getText().trim().toString());
 				
 				 if(c>homeWin.capacity) {
 					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+")");
@@ -117,6 +119,7 @@ public class CreateQueueFrame {
 				}
 				
 				
+			}
 			}
 		});
 		btnCreate.setBounds(119, 81, 149, 25);

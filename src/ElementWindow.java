@@ -98,6 +98,10 @@ public class ElementWindow {
 				//for(int i=0;i<noOfElements;i++) {
 				//	JTextField t =(JTextField)elements[i].getComponent(2);	
 				//}
+				if(textField.getText().trim().isEmpty())
+				{
+					lblNumonly.setText("Field Is Empty");
+				}
 				
 				
 				home.btnDst.setEnabled(true);
@@ -125,26 +129,7 @@ public class ElementWindow {
 			Component horizontalStrut = Box.createHorizontalStrut(30);
 			panel_2.add(horizontalStrut);
 			
-			textField = new JTextField();
-			textField.addKeyListener(new KeyAdapter() {
-				public void keyPressed(KeyEvent evt) {
-					char c = evt.getKeyChar();
-					if(Character.isLetter(c)  ) {
-						textField.setEditable(false);
-						lblNumonly.setText("Enter Number's Only!");
-					}
-						else
-						{
-							
-							textField.setEditable(true);
-						}
-				}
-				
-				public void keyReleased(KeyEvent e) {
-					lblNumonly.setText("");
-				}
-			});
-			
+			textField = new JTextField();	
 			panel_2.add(textField);
 			textField.setColumns(10);
 			Component Strut = Box.createVerticalStrut(30);
