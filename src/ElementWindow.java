@@ -16,6 +16,8 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
@@ -29,6 +31,8 @@ public class ElementWindow {
 	JTextField[] elements;
 	JButton btnDst;
 	static HomeFrame home;
+	JLabel lblNumonly;
+	JButton btnNewButton;
 	/**
 	 * Launch the application.
 	 */
@@ -81,7 +85,7 @@ public class ElementWindow {
 				panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 				panel.add(panel_1);
 				panel_1.revalidate();
-		JButton btnNewButton = new JButton("Create");
+		btnNewButton = new JButton("Create");
 		btnNewButton.setBounds(179, 207, 141, 21);
 		btnNewButton.setBackground(SystemColor.activeCaption);
 		btnNewButton.setForeground(new Color(0, 0, 0));
@@ -94,6 +98,8 @@ public class ElementWindow {
 				//for(int i=0;i<noOfElements;i++) {
 				//	JTextField t =(JTextField)elements[i].getComponent(2);	
 				//}
+				
+				
 				home.btnDst.setEnabled(true);
 				home.btnNewButton_1.setEnabled(true);
 				home.btnNewButton_2.setEnabled(true);
@@ -103,6 +109,10 @@ public class ElementWindow {
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
+		
+		lblNumonly = new JLabel("");
+		lblNumonly.setBounds(360, 221, 153, 14);
+		frame.getContentPane().add(lblNumonly);
 		elements = new JTextField[noOfElements];
 		for(int i=0;i<noOfElements;i++) {
 			JPanel panel_2 = new JPanel();
@@ -116,6 +126,25 @@ public class ElementWindow {
 			panel_2.add(horizontalStrut);
 			
 			textField = new JTextField();
+			textField.addKeyListener(new KeyAdapter() {
+				public void keyPressed(KeyEvent evt) {
+					char c = evt.getKeyChar();
+					if(Character.isLetter(c)  ) {
+						textField.setEditable(false);
+						lblNumonly.setText("Enter Number's Only!");
+					}
+						else
+						{
+							
+							textField.setEditable(true);
+						}
+				}
+				
+				public void keyReleased(KeyEvent e) {
+					lblNumonly.setText("");
+				}
+			});
+			
 			panel_2.add(textField);
 			textField.setColumns(10);
 			Component Strut = Box.createVerticalStrut(30);

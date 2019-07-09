@@ -26,6 +26,8 @@ import javax.swing.AbstractButton;
 import javax.swing.Box;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import java.awt.ComponentOrientation;
@@ -67,6 +69,7 @@ public class HomeFrame {
 	private int rear;
 	private int front;
 	private JLabel lblError;
+	private JLabel lblNumonly;
 	/**
 	 * Launch the application.
 	 */
@@ -204,6 +207,25 @@ public class HomeFrame {
 		  panel_3.setVisible(false);
 		  
 		  txtElement = new JTextField();
+		  txtElement.addKeyListener(new KeyAdapter() {
+				public void keyPressed(KeyEvent evt) {
+					char c = evt.getKeyChar();
+					
+					if(Character.isLetter(c)  ) {
+						txtElement.setEditable(false);
+						lblNumonly.setText("Enter Number Only!");
+					}
+						else
+						{
+							
+							txtElement.setEditable(true);
+						}
+
+				}
+				public void keyReleased(KeyEvent e) {
+					lblNumonly.setText("");
+				}
+			});
 		  txtElement.setBounds(377, 25, 116, 22);
 		  panel_3.add(txtElement);
 		  txtElement.setColumns(10);
@@ -216,8 +238,11 @@ public class HomeFrame {
 		  btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
 		  btnInsert.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent arg0) {
-		  		
-		  	 if(rear==-1){
+		  		if(txtElement.getText().trim().isEmpty())
+				{
+					lblNumonly.setText("Field Is Empty");
+				}
+		  		else if(rear==-1){
 		  			lblError.setVisible(false);
 		  			panel_3.setVisible(false);
 		  			
@@ -263,6 +288,11 @@ public class HomeFrame {
 		  lblEnterTheElement.setForeground(SystemColor.controlDkShadow);
 		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		  
+		  lblNumonly = new JLabel("");
+		  lblNumonly.setForeground(Color.RED);
+		  lblNumonly.setBounds(79, 66, 165, 19);
+		  panel_3.add(lblNumonly);
+		  
 		  Panel panel_4 = new Panel();
 		  panel_4.setBounds(0, 496, 1047, 225);
 		  visualPanel.add(panel_4);
@@ -304,6 +334,7 @@ public class HomeFrame {
 				btnCrt.setEnabled(false);
 				cmbCapacity.setEnabled(false);
 				comboBox.setEnabled(false); 
+				lblError.setVisible(false);
 			
 			}
 		});
@@ -327,25 +358,24 @@ public class HomeFrame {
 		
 		controlPanel.add(btnCrt);
 	//	displayQueue(10);
-		btnDst = new JButton("Destroy");
+		btnDst = new JButton("Delete");
 		btnDst.setFont(new Font("Sitka Heading", Font.BOLD, 15));
 		btnDst.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnDst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				lblElement.setText(null);
+				lblQueueIsEmpty.setVisible(true);
+				panelQueue.removeAll();
 				textFieldCapacity.setText("");
 				textFieldSize.setText("");
 				textFieldFront.setText("");
 				textFieldRear.setText("");
 				btnNewButton_1.setEnabled(false);
 				btnNewButton_2.setEnabled(false);
-				btnCrt.setEnabled(false);
+				btnCrt.setEnabled(true);
 				lblError.setVisible(true);
-				lblError.setText("Queue Destroyed");
-				//lblError.setVisible(false);
-				comboBox.setEnabled(false);
-				cmbCapacity.setEnabled(false);
+				lblError.setText("Queue Deleted!");
+				comboBox.setEnabled(true);
+				cmbCapacity.setEnabled(true);
 				btnDst.setEnabled(false);
 				panel_3.setVisible(false);
 				
@@ -367,7 +397,7 @@ public class HomeFrame {
 				if(rear==(capacity-1)) {
 		  			
 		  			lblError.setVisible(true);
-		  			lblError.setText("Queue is Full");
+		  			lblError.setText("Queue is Full!");
 		  		}
 				else {
 		  			panel_3.setVisible(true);
@@ -390,10 +420,10 @@ public class HomeFrame {
 				if(front==-1)
 				{
 					lblError.setVisible(true);
-					lblError.setText("Queue is Empty");
+					lblError.setText("Queue is Empty!");
 				}
 				else {
-
+					lblError.setVisible(false);
 		  			
 		  			JLabel lbl=(JLabel)elements[front].getComponent(1);
 		  			lbl.setText("NULL");

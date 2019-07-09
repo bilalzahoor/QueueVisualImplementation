@@ -12,6 +12,8 @@ import java.awt.SystemColor;
 import java.awt.Component;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CreateQueueFrame {
 
@@ -19,7 +21,9 @@ public class CreateQueueFrame {
 	 private JTextField textField;
 	 static HomeFrame homeWin;
 	 JLabel lblNewLabel;
+	 JButton btnCreate;
 	 JLabel lblCreateError;
+	 private JLabel lblNumOnly;
 	/**
 	 * Launch the application.
 	 */
@@ -59,6 +63,24 @@ public class CreateQueueFrame {
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent evt) {
+				char c = evt.getKeyChar();
+				if(Character.isLetter(c)  ) {
+					textField.setEditable(false);
+					lblNumOnly.setText("Enter Number's Only!");
+				}
+					else
+					{
+						
+						textField.setEditable(true);
+					}
+			}
+			
+			public void keyReleased(KeyEvent e) {
+				lblNumOnly.setText("");
+			}
+		});
 		textField.setBounds(222, 27, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -67,15 +89,22 @@ public class CreateQueueFrame {
 		lblCreateError.setBounds(32, 166, 380, 84);
 		frame.getContentPane().add(lblCreateError);
 		
-		JButton btnCreate = new JButton("Create");
+		btnCreate = new JButton("Create");
 		btnCreate.setFont(new Font("Sitka Small", Font.BOLD, 15));
 		btnCreate.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		btnCreate.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnCreate.setBackground(SystemColor.activeCaption);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(textField.getText().trim().isEmpty())
+				{
+					lblNumOnly.setText("Field is Empty");
+				}
+				
 				int c = Integer.parseInt(textField.getText().toString());
-				if(c>homeWin.capacity) {
+				
+				 if(c>homeWin.capacity) {
 					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+")");
 					
 				}
@@ -92,6 +121,16 @@ public class CreateQueueFrame {
 		});
 		btnCreate.setBounds(119, 81, 149, 25);
 		frame.getContentPane().add(btnCreate);
+		
+		JLabel lblOnlynum = new JLabel("");
+		lblOnlynum.setBounds(169, 140, 46, 14);
+		frame.getContentPane().add(lblOnlynum);
+		
+		lblNumOnly = new JLabel("");
+		lblNumOnly.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumOnly.setForeground(Color.RED);
+		lblNumOnly.setBounds(272, 228, 152, 22);
+		frame.getContentPane().add(lblNumOnly);
 		
 		
 	}
