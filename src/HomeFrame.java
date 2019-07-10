@@ -43,6 +43,10 @@ import java.awt.SystemColor;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 public class HomeFrame {
 
@@ -63,6 +67,10 @@ public class HomeFrame {
 	JPanel panelQueue;
 	JPanel[] elements=null;
 	JPanel panelElement;
+	JRadioButton rdbtnRear;
+	JButton btnInsert;
+	JComboBox comboBox;
+	JRadioButton rdbtnFront;
 	private JTextField textFieldCapacity;
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
@@ -74,6 +82,9 @@ public class HomeFrame {
 	private JLabel lblNumonly;
 	private String queueType;
 	private Panel panel_3;
+	private Panel panel_5;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -217,52 +228,31 @@ public class HomeFrame {
 		  txtElement.setColumns(10);
 		 
 		  
-		  JButton btnInsert = new JButton("Insert.");
+		  btnInsert = new JButton("Insert.");
 		  btnInsert.setFont(new Font("Sitka Text", Font.BOLD, 16));
 		  btnInsert.setBackground(SystemColor.activeCaption);
 		  btnInsert.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		  btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
 		  btnInsert.addActionListener(new ActionListener() {
-		  	public void actionPerformed(ActionEvent arg0) {
-		  		if(txtElement.getText().trim().isEmpty())
+		  	
+			public void actionPerformed(ActionEvent mv) {
+				// insert into the simple queue
+				if(queueType.compareTo("SQ")==0)
 				{
-					lblNumonly.setText("Field Is Empty");
+					insertAtRear();
+			  	}
+				// insert in dequeue
+				else if(queueType.compareTo("DQ")==0)
+				{
+					if(rdbtnRear.isSelected())
+						insertAtRear();
+					else
+						insertAtFront();
+					
 				}
-		  		else if(rear==-1){
-		  			lblError.setVisible(false);
-		  			panel_3.setVisible(false);
-		  			
-		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
-		  			lbl.setText(txtElement.getText());
-		  			lbl =(JLabel)elements[rear+1].getComponent(2);
-		  			lbl.setText("Front/Rear");
-		  			rear=rear+1;
-		  			front=front+1;
-		  			textFieldRear.setText(""+rear);
-		  			textFieldFront.setText(""+front);
-		  		}
-
-		  		else {
-		  			panel_3.setVisible(false);
-		  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
-		  			lbl.setText(txtElement.getText());
-		  			lbl =(JLabel)elements[rear+1].getComponent(2);
-		  			lbl.setText("Rear");
-		  			lbl =(JLabel)elements[rear].getComponent(2);
-		  			if(front == rear)
-		  			{
-		  				lbl.setText("Front");
-		  				
-		  			}
-		  			else
-		  			
-		  				lbl.setText(" ");
-		  			rear=rear+1;
-		  			textFieldRear.setText(""+rear);
-		  			
-		  		}
-		  	}
-		  });
+				lblNumonly.setVisible(true);	
+			}
+	 });
 		  btnInsert.setBounds(377, 60, 116, 25);
 		  panel_3.add(btnInsert);
 		  
@@ -276,8 +266,27 @@ public class HomeFrame {
 		  
 		  lblNumonly = new JLabel("");
 		  lblNumonly.setForeground(Color.RED);
-		  lblNumonly.setBounds(79, 66, 165, 19);
+		  lblNumonly.setBounds(122, 68, 165, 19);
 		  panel_3.add(lblNumonly);
+		  
+		  panel_5 = new Panel();
+		  panel_5.setBounds(10, 50, 106, 48);
+		  panel_3.add(panel_5);
+		  panel_5.setLayout(null);
+		  panel_5.setVisible(false);
+		  
+		  rdbtnRear = new JRadioButton("Rear");
+		  rdbtnRear.setSelected(true);
+		  buttonGroup.add(rdbtnRear);
+		  rdbtnRear.setBackground(SystemColor.controlHighlight);
+		  rdbtnRear.setBounds(0, 0, 109, 23);
+		  panel_5.add(rdbtnRear);
+		  
+		  rdbtnFront = new JRadioButton("Front");
+		  buttonGroup.add(rdbtnFront);
+		  rdbtnFront.setBackground(SystemColor.controlHighlight);
+		  rdbtnFront.setBounds(0, 26, 109, 23);
+		  panel_5.add(rdbtnFront);
 		  
 		  Panel panel_4 = new Panel();
 		  panel_4.setBounds(0, 496, 1047, 225);
@@ -299,11 +308,12 @@ public class HomeFrame {
 		frame.getContentPane().add(controlPanel);
 		controlPanel.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setForeground(Color.BLACK);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Simple Queue", "Priority Queue", "Circular Queue", "Doubly Ended Queue (DEqueue)"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Simple Queue","Doubly Ended Queue (DEqueue)", "Priority Queue", "Circular Queue"}));
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
+				
 				String s =comboBox.getSelectedItem().toString();
 				if(s.compareTo("Doubly Ended Queue (DEqueue)")==0)
 				{
@@ -396,10 +406,35 @@ public class HomeFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
-				if(queueType.compareTo("SQ")==0)
-					insertSimpleQueue();
-				else if(queueType.compareTo("DQ")==0)
-					insertDequeue();
+				lblNumonly.setVisible(false);
+				if(queueType.compareTo("SQ")==0) {
+					if(rear==(capacity-1)) {
+			  			
+			  			lblError.setVisible(true);
+			  			lblError.setText("Queue is Full!");
+			  		}
+					else {
+			  			panel_3.setVisible(true);
+			  			txtElement.setText(null);
+			  			panel_5.setVisible(false);
+			  			
+			  		}
+
+				}
+				else if(queueType.compareTo("DQ")==0) {
+					if(rear==(capacity-1) && front==0) {
+			  			
+			  			lblError.setVisible(true);
+			  			lblError.setText("Queue is Full!");
+			  		}
+					else {
+			  			panel_3.setVisible(true);
+			  			panel_5.setVisible(true);
+			  			txtElement.setText(null);
+			  			
+
+			  		}
+				}
 				
 			}
 		 });
@@ -519,30 +554,89 @@ public class HomeFrame {
 		
 		
 	}
-	void insertSimpleQueue() {
-		if(rear==(capacity-1)) {
-  			
-  			lblError.setVisible(true);
-  			lblError.setText("Queue is Full!");
+	// insert element at rear
+	void insertAtRear() {
+			if(txtElement.getText().trim().isEmpty())
+			{
+				lblNumonly.setText("Field Is Empty");
+			}
+			// if the queue is empty
+	  		else if(rear==-1){
+	  			lblError.setVisible(false);
+	  			panel_3.setVisible(false);
+	  			
+	  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+	  			lbl.setText(txtElement.getText());
+	  			lbl =(JLabel)elements[rear+1].getComponent(2);
+	  			lbl.setText("Front/Rear");
+	  			rear=rear+1;
+	  			front=front+1;
+	  			textFieldRear.setText(""+rear);
+	  			textFieldFront.setText(""+front);
+	  		}
+				//if queue contains at least one element
+	  		else {
+	  			panel_3.setVisible(false);
+	  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+	  			lbl.setText(txtElement.getText());
+	  			lbl =(JLabel)elements[rear+1].getComponent(2);
+	  			lbl.setText("Rear");
+	  			lbl =(JLabel)elements[rear].getComponent(2);
+	  			// if queue contains only one element
+	  			if(front == rear)
+	  			{
+	  				lbl.setText("Front");
+	  				
+	  			}
+	  			else
+	  			
+	  				lbl.setText(" ");
+	  			rear=rear+1;
+	  			textFieldRear.setText(""+rear);
+	  			
+	  		}
+			
+		}
+	void insertAtFront() {
+		if(txtElement.getText().trim().isEmpty())
+		{
+			lblNumonly.setText("Field Is Empty");
+		}
+		// if the queue is empty
+  		else if(rear==-1){
+  			lblError.setVisible(false);
+  			panel_3.setVisible(false);
+  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+  			lbl.setText(txtElement.getText());
+  			lbl =(JLabel)elements[rear+1].getComponent(2);
+  			lbl.setText("Front/Rear");
+  			rear=rear+1;
+  			front=front+1;
+  			textFieldRear.setText(""+rear);
+  			textFieldFront.setText(""+front);
   		}
-		else {
-  			panel_3.setVisible(true);
-  			txtElement.setText(null);
+		//if queue contains at least one element
+  		else {
+  			panel_3.setVisible(false);
+  			JLabel lbl =(JLabel)elements[front-1].getComponent(1);
+  			lbl.setText(txtElement.getText());
+  			lbl =(JLabel)elements[front-1].getComponent(2);
+  			lbl.setText("Front");
+  			lbl =(JLabel)elements[front].getComponent(2);
+  			// if queue contains only one element
+  			if(front == rear)
+  			{
+  				lbl.setText("Rear");
+  				
+  			}
+  			else
   			
+  				lbl.setText(" ");
+  			front=front-1;
+  			textFieldFront.setText(""+front);
   			
   		}
+
 	}
-	void insertDequeue() {
-		if(rear==(capacity-1) && front==0) {
-  			
-  			lblError.setVisible(true);
-  			lblError.setText("Queue is Full!");
-  		}
-		else {
-  			panel_3.setVisible(true);
-  			txtElement.setText(null);
-  			
-  			
-  		}
-	}
+	
 }
