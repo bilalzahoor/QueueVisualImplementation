@@ -101,15 +101,16 @@ public class ElementWindow {
 				if(textField.getText().trim().isEmpty())
 				{
 					lblNumonly.setText("Field Is Empty");
+				
 				}
-				
-				
-				home.btnDst.setEnabled(true);
-				home.btnNewButton_1.setEnabled(true);
-				home.btnNewButton_2.setEnabled(true);
-				home.displayQueue(noOfElements,elements);
-				home.lblQueueIsEmpty.setVisible(false);
-			frame.setVisible(false);
+					else {	
+							home.btnDst.setEnabled(true);
+							home.btnNewButton_1.setEnabled(true);
+							home.btnNewButton_2.setEnabled(true);
+							home.displayQueue(noOfElements,elements);
+							home.lblQueueIsEmpty.setVisible(false);
+							frame.setVisible(false);
+				}
 			}
 		});
 		frame.getContentPane().add(btnNewButton);

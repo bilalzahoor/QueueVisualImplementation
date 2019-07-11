@@ -448,34 +448,6 @@ public class HomeFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(front==-1)
-				{
-					lblError.setVisible(true);
-					lblError.setText("Queue is Empty!");
-				}
-				else {
-					lblError.setVisible(false);
-		  			
-		  			JLabel lbl=(JLabel)elements[front].getComponent(1);
-		  			lbl.setText("NULL");
-		  			lbl=(JLabel)elements[front].getComponent(2);
-		  			lbl.setText(" ");
-		  			if(front!=rear) {
-		  				lbl=(JLabel)elements[front+1].getComponent(2);
-		  				lbl.setText("Front");
-		  				front=front+1;
-		  				textFieldFront.setText(""+front);
-		  			}
-		  			else {
-		  			front=-1;
-		  			rear=-1;
-		  			textFieldFront.setText(""+front);
-		  			textFieldRear.setText(""+rear);
-		  			}
-		  			
-		  			
-					
-				}
 				
 				
 			}
@@ -575,7 +547,7 @@ public class HomeFrame {
 	  			textFieldFront.setText(""+front);
 	  		}
 				//if queue contains at least one element
-	  		else {
+	  		else if(rear<=capacity) {
 	  			panel_3.setVisible(false);
 	  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
 	  			lbl.setText(txtElement.getText());
@@ -637,6 +609,45 @@ public class HomeFrame {
   			
   		}
 
+	}
+	void deleteAtFront()
+	{
+		
+		if(front==-1)
+		{
+			lblError.setVisible(true);
+			lblError.setText("Queue is Empty!");
+		}
+		else {
+			lblError.setVisible(false);
+  			
+  			JLabel lbl=(JLabel)elements[front].getComponent(1);
+  			lbl.setText("NULL");
+  			lbl=(JLabel)elements[front].getComponent(2);
+  			lbl.setText(" ");
+  			//if array contains more than one element
+  			if(front!=rear) {
+  				lbl=(JLabel)elements[front+1].getComponent(2);
+  				lbl.setText("Front");
+  				front=front+1;
+  				textFieldFront.setText(""+front);
+  			}
+  			//if array contains only one element	
+  			else {
+  				front=-1;
+  				rear=-1;
+  				textFieldFront.setText(""+front);
+  				textFieldRear.setText(""+rear);
+  			}
+  			
+  			
+			
+		}
+		
+		
+		
+		
+		
 	}
 	
 }
