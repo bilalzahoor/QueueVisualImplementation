@@ -1,8 +1,6 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -54,12 +52,14 @@ public class CreateQueueFrame {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 661, 340);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
-		lblNewLabel = new JLabel("Enter Number of Elements");
-		lblNewLabel.setBounds(32, 0, 165, 77);
+		lblNewLabel = new JLabel("Enter Number of Elements:");
+		lblNewLabel.setFont(new Font("Sitka Subheading", Font.BOLD, 13));
+		lblNewLabel.setBounds(32, 27, 180, 22);
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
@@ -81,12 +81,12 @@ public class CreateQueueFrame {
 				lblNumOnly.setText("");
 			}
 		});
-		textField.setBounds(222, 27, 116, 22);
+		textField.setBounds(272, 27, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		lblCreateError = new JLabel("");
 		lblCreateError.setForeground(Color.RED);
-		lblCreateError.setBounds(32, 166, 380, 84);
+		lblCreateError.setBounds(10, 168, 635, 84);
 		frame.getContentPane().add(lblCreateError);
 		
 		btnCreate = new JButton("Create");
@@ -122,17 +122,13 @@ public class CreateQueueFrame {
 			}
 			}
 		});
-		btnCreate.setBounds(119, 81, 149, 25);
+		btnCreate.setBounds(272, 104, 116, 25);
 		frame.getContentPane().add(btnCreate);
 		
-		JLabel lblOnlynum = new JLabel("");
-		lblOnlynum.setBounds(169, 140, 46, 14);
-		frame.getContentPane().add(lblOnlynum);
-		
 		lblNumOnly = new JLabel("");
-		lblNumOnly.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumOnly.setFont(new Font("Sitka Small", Font.BOLD, 14));
 		lblNumOnly.setForeground(Color.RED);
-		lblNumOnly.setBounds(272, 228, 152, 22);
+		lblNumOnly.setBounds(493, 278, 152, 22);
 		frame.getContentPane().add(lblNumOnly);
 		
 		
