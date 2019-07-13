@@ -469,7 +469,6 @@ public class HomeFrame {
 					deleteAtFront();
 			  	}
 				else if(queueType.compareTo("DQ")==0) {
-					DeleteFromPanel.setVisible(false);
 					if(rdbtnDFront.isSelected()) {
 						deleteAtFront();
 						}
@@ -493,7 +492,6 @@ public class HomeFrame {
 		controlPanel.add(lblNewLabel);
 		
 		DeleteFromPanel = new Panel();
-		DeleteFromPanel.setEnabled(false);
 		DeleteFromPanel.setBackground(SystemColor.textInactiveText);
 		DeleteFromPanel.setBounds(0, 562, 265, 159);
 		controlPanel.add(DeleteFromPanel);
