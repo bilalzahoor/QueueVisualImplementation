@@ -140,7 +140,7 @@ public class HomeFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 151, 1023, 339);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(SystemColor.info);
 		visualPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -337,6 +337,7 @@ public class HomeFrame {
 				queueType="DQ";
 				}
 		else if(s.compareTo("Simple Queue")==0) {
+			DeleteFromPanel.setVisible(false);
 			queueType="SQ";
 			
 		}
