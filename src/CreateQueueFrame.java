@@ -14,6 +14,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
 
 public class CreateQueueFrame {
 
@@ -58,8 +59,10 @@ public class CreateQueueFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		lblNewLabel = new JLabel("Enter Number of Elements");
-		lblNewLabel.setBounds(32, 0, 165, 77);
+		lblNewLabel = new JLabel("Enter the Number of Elements:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(12, 34, 408, 46);
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
@@ -81,7 +84,7 @@ public class CreateQueueFrame {
 				lblNumOnly.setText("");
 			}
 		});
-		textField.setBounds(222, 27, 116, 22);
+		textField.setBounds(141, 93, 149, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		lblCreateError = new JLabel("");
@@ -122,7 +125,7 @@ public class CreateQueueFrame {
 			}
 			}
 		});
-		btnCreate.setBounds(119, 81, 149, 25);
+		btnCreate.setBounds(141, 128, 149, 25);
 		frame.getContentPane().add(btnCreate);
 		
 		JLabel lblOnlynum = new JLabel("");
