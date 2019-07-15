@@ -231,9 +231,29 @@ public class HomeFrame {
 				else if(queueType.compareTo("DQ")==0)
 				{
 					if(rdbtnRear.isSelected())
-						insertAtRear();
-					else
-						insertAtFront();
+					{
+						
+						//if element cannot be inserted at rear end
+						if(front!=0 && rear==(capacity-1)) {
+							
+							lblError.setVisible(true);
+				  			lblError.setText("Element cannot be inserted at Rear as there is no space!");
+							
+						}
+						else
+							insertAtRear();
+					}
+					else {
+						//if list contains only one element at index 0 element cannot be inserted at front end
+						 if(front==0 && rear==0) {
+							
+							lblError.setVisible(true);
+				  			lblError.setText("Element cannot be inserted at Front as there is no space!");
+							
+						}
+						 else
+							 insertAtFront();
+					}
 					
 				}
 				lblFempty.setVisible(true);	
@@ -314,7 +334,7 @@ public class HomeFrame {
 		TypeBox = new JComboBox();
 		TypeBox.setFont(new Font("Sitka Text", Font.BOLD, 11));
 		TypeBox.setForeground(Color.BLACK);
-		TypeBox.setModel(new DefaultComboBoxModel (new String[] { "Simple Queue","Doubly Ended Queue (DEque)", "Priority Queue", "Circular Queue"} ));
+		TypeBox.setModel(new DefaultComboBoxModel (new String[] { "Simple Queue","Doubly Ended Queue (DEqueue)", "Priority Queue", "Circular Queue"} ));
 		TypeBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				
@@ -434,7 +454,9 @@ public class HomeFrame {
 			  			
 			  			lblError.setVisible(true);
 			  			lblError.setText("Queue is Full!");
+			  			
 			  		}
+					
 					else {
 						EnqueuePanel.setVisible(true);
 						DQInsertAtPNL.setVisible(true);
@@ -645,7 +667,7 @@ public class HomeFrame {
 			lblFempty.setText("Field Is Empty");
 		}
 		// if the queue is empty
-  		else if(rear==-1){
+  		else if(front==-1 && rear==-1){
   			lblError.setVisible(false);
   			EnqueuePanel.setVisible(false);
   			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
@@ -657,8 +679,11 @@ public class HomeFrame {
   			textFieldRear.setText(""+rear);
   			textFieldFront.setText(""+front);
   		}
+		
+	
 		//if queue contains at least one element
   		else {
+  			
   			EnqueuePanel.setVisible(false);
   			JLabel lbl =(JLabel)elements[front-1].getComponent(1);
   			lbl.setText(txtFieldEnQ.getText());

@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JScrollPane;
 
 public class ElementWindow {
 
@@ -110,21 +111,23 @@ public class ElementWindow {
 		lblNumonly.setBounds(323, 644, 153, 14);
 		frame.getContentPane().add(lblNumonly);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 70, 466, 554);
+		frame.getContentPane().add(scrollPane);
+		
 		
 		Panel MainPNL = new Panel();
+		scrollPane.setViewportView(MainPNL);
 		MainPNL.setBackground(Color.WHITE);
-		MainPNL.setBounds(10, 70, 466, 554);
-		
-		frame.getContentPane().add(MainPNL);
-			MainPNL.setLayout(null);
+			MainPNL.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 			
 
 			Panel ElementPNL = new Panel();
 			ElementPNL.setBackground(Color.WHITE);
-			ElementPNL.setBounds(10, 10, 446, 534);
 			MainPNL.add(ElementPNL);
 			ElementPNL.setLayout(new BoxLayout(ElementPNL, BoxLayout.Y_AXIS));
+			ElementPNL.revalidate();
 			
 			Panel panel = new Panel();
 			panel.setBackground(Color.WHITE);
@@ -138,7 +141,6 @@ public class ElementWindow {
 			lblEnterTheElements.setFont(new Font("Sitka Banner", Font.BOLD, 50));
 			lblEnterTheElements.setBounds(0, 0, 466, 64);
 			panel.add(lblEnterTheElements);
-			ElementPNL.revalidate();
 						
 		elements = new JTextField[noOfElements];
 		for(int i=0;i<noOfElements;i++) {
