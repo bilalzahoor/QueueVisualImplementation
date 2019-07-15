@@ -86,6 +86,7 @@ public class HomeFrame {
 	private Panel panel_5;
 	private Panel DeleteFromPanel;
 	private final ButtonGroup buttonGroupInsert = new ButtonGroup();
+	private JLabel lblDeleteFrom_1;
 	private final ButtonGroup buttonGroupDelete = new ButtonGroup();
 	
 	/**
@@ -138,14 +139,14 @@ public class HomeFrame {
 		visualPanel.add(lblEmpty);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 151, 1023, 557);
-		panel.setBackground(Color.decode("#2E100F"));
+		panel.setBounds(12, 151, 1023, 339);
+		panel.setBackground(SystemColor.info);
 		visualPanel.add(panel);
 		panel.setLayout(null);
 		
 		Panel panel_2 = new Panel();
-		panel_2.setBounds(807, 0, 216, 167);
 		panel_2.setBackground(SystemColor.controlHighlight);
+		panel_2.setBounds(807, 24, 206, 204);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -199,42 +200,39 @@ public class HomeFrame {
 		panel_2.add(textFieldRear);
 		textFieldRear.setColumns(10);
 		 
+		 JScrollPane scrollPane = new JScrollPane();
+		 scrollPane.setBounds(89, 24, 712, 204);
+		 panel.add(scrollPane);
+		 
 		 JPanel panel_1 = new JPanel();
-		 panel_1.setBounds(12, 0, 789, 343);
-		 panel.add(panel_1);
-		  panel_1.setLayout(null);
+		 scrollPane.setViewportView(panel_1);
+		 panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
 		 
 		  panelQueue = new JPanel();
-		  panelQueue.setBounds(0, 107, 0, 0);
 		  panel_1.add(panelQueue);
 		  panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
 		  panelQueue.setVisible(true);
 		  
 		  lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
-		  lblQueueIsEmpty.setBounds(12, 13, 765, 317);
 		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsEmpty.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "", TitledBorder.LEADING, TitledBorder.BELOW_BOTTOM, null, null));
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 81));
-		 
-		 JScrollPane scrollPane = new JScrollPane();
-		 scrollPane.setBounds(12, 13, 789, 215);
-		 panel.add(scrollPane);
 		  
 		   panel_3 = new Panel();
-		   panel_3.setBounds(807, 173, 216, 81);
+		  panel_3.setBounds(184, 234, 515, 98);
 		  panel.add(panel_3);
 		  panel_3.setBackground(SystemColor.controlHighlight);
 		  panel_3.setLayout(null);
 		  panel_3.setVisible(false);
 		  
 		  txtElement = new JTextField();
-		  txtElement.setBounds(22, 41, 88, 22);
+		  txtElement.setBounds(377, 25, 116, 22);
 		  panel_3.add(txtElement);
 		  txtElement.setColumns(10);
 		 
 		  
-		  btnInsert = new JButton("Insert");
+		  btnInsert = new JButton("Insert.");
 		  btnInsert.setFont(new Font("Sitka Text", Font.BOLD, 16));
 		  btnInsert.setBackground(SystemColor.activeCaption);
 		  btnInsert.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
@@ -260,18 +258,16 @@ public class HomeFrame {
 				panel_5.setVisible(false);
 			}
 	 });
-		  btnInsert.setBounds(122, 40, 72, 25);
+		  btnInsert.setBounds(377, 60, 116, 25);
 		  panel_3.add(btnInsert);
 		  
 		  lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
-		  lblEnterTheElement.setHorizontalTextPosition(SwingConstants.CENTER);
-		  lblEnterTheElement.setBorder(null);
 		  lblEnterTheElement.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblEnterTheElement.setBounds(12, 13, 192, 23);
+		  lblEnterTheElement.setBounds(46, 25, 247, 23);
 		  panel_3.add(lblEnterTheElement);
 		  lblEnterTheElement.setBackground(SystemColor.controlHighlight);
-		  lblEnterTheElement.setForeground(Color.RED);
-		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		  lblEnterTheElement.setForeground(SystemColor.controlDkShadow);
+		  lblEnterTheElement.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		  
 		  lblNumonly = new JLabel("");
 		  lblNumonly.setForeground(Color.RED);
@@ -279,8 +275,8 @@ public class HomeFrame {
 		  panel_3.add(lblNumonly);
 		  
 		  panel_5 = new Panel();
-		  panel_5.setBounds(807, 260, 216, 83);
 		  panel_5.setBackground(SystemColor.controlHighlight);
+		  panel_5.setBounds(705, 234, 308, 98);
 		  panel.add(panel_5);
 		  panel_5.setLayout(null);
 		  panel_5.setVisible(false);
@@ -289,19 +285,24 @@ public class HomeFrame {
 		  rdbtnRear.setSelected(true);
 		  buttonGroupInsert.add(rdbtnRear);
 		  rdbtnRear.setBackground(SystemColor.controlHighlight);
-		  rdbtnRear.setBounds(8, 32, 67, 23);
+		  rdbtnRear.setBounds(159, 21, 109, 23);
 		  panel_5.add(rdbtnRear);
 		  
 		  rdbtnFront = new JRadioButton("Front");
 		  buttonGroupInsert.add(rdbtnFront);
 		  rdbtnFront.setBackground(SystemColor.controlHighlight);
-		  rdbtnFront.setBounds(141, 32, 67, 23);
+		  rdbtnFront.setBounds(159, 68, 109, 23);
 		  panel_5.add(rdbtnFront);
 		  
-		  JLabel lblInsertAt = new JLabel("Insert at:");
+		  JLabel lblInsertAt = new JLabel("Insert At:");
 		  lblInsertAt.setFont(new Font("Sitka Display", Font.BOLD, 18));
-		  lblInsertAt.setBounds(75, 0, 85, 23);
+		  lblInsertAt.setBounds(10, 21, 119, 23);
 		  panel_5.add(lblInsertAt);
+		  
+		  JLabel lblNewLabel_1 = new JLabel("Insert At:");
+		  lblNewLabel_1.setFont(new Font("Sitka Display", Font.BOLD, 18));
+		  lblNewLabel_1.setBounds(10, 68, 119, 23);
+		  panel_5.add(lblNewLabel_1);
 		  
 		  Panel panel_4 = new Panel();
 		  panel_4.setBounds(0, 496, 1047, 225);
@@ -493,31 +494,34 @@ public class HomeFrame {
 		
 		DeleteFromPanel = new Panel();
 		DeleteFromPanel.setBackground(SystemColor.textInactiveText);
-		DeleteFromPanel.setBounds(0, 562, 265, 81);
+		DeleteFromPanel.setBounds(0, 562, 265, 159);
 		controlPanel.add(DeleteFromPanel);
 		DeleteFromPanel.setVisible(false);
 		DeleteFromPanel.setLayout(null);
 		
 		rdbtnDFront = new JRadioButton("Front");
-		rdbtnDFront.setHorizontalAlignment(SwingConstants.LEFT);
 		rdbtnDFront.setSelected(true);
 		buttonGroupDelete.add(rdbtnDFront);
 		rdbtnDFront.setBackground(SystemColor.textInactiveText);
-		rdbtnDFront.setBounds(12, 45, 109, 23);
+		rdbtnDFront.setBounds(138, 28, 109, 23);
 		DeleteFromPanel.add(rdbtnDFront);
 		
 		JRadioButton rdbtnDRear = new JRadioButton("Rear");
-		rdbtnDRear.setHorizontalAlignment(SwingConstants.RIGHT);
 		buttonGroupDelete.add(rdbtnDRear);
 		rdbtnDRear.setBackground(SystemColor.textInactiveText);
-		rdbtnDRear.setBounds(138, 45, 109, 23);
+		rdbtnDRear.setBounds(138, 109, 109, 23);
 		DeleteFromPanel.add(rdbtnDRear);
 		
 		JLabel lblDeleteFrom = new JLabel("Delete From:");
-		lblDeleteFrom.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 18));
-		lblDeleteFrom.setBounds(12, 13, 235, 23);
+		lblDeleteFrom.setBounds(10, 28, 108, 23);
 		DeleteFromPanel.add(lblDeleteFrom);
+		
+		lblDeleteFrom_1 = new JLabel("Delete From:");
+		lblDeleteFrom_1.setFont(new Font("Sitka Display", Font.BOLD, 18));
+		lblDeleteFrom_1.setBackground(SystemColor.info);
+		lblDeleteFrom_1.setBounds(10, 109, 108, 23);
+		DeleteFromPanel.add(lblDeleteFrom_1);
 	}
 	void displayQueue(int n, JTextField[] e) {
 		
