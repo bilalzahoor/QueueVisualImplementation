@@ -2,12 +2,9 @@ import java.awt.EventQueue;
 import java.awt.*;
 import javax.swing.JFrame;
 import java.awt.Panel;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Component;
 import javax.swing.Box;
@@ -15,6 +12,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
+import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ElementWindow {
 
@@ -26,7 +27,6 @@ public class ElementWindow {
 	static HomeFrame home;
 	JLabel lblNumonly;
 	JButton btnCrt;
-	private JScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
@@ -59,12 +59,22 @@ public class ElementWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1202, 701);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				home.btnCrt.setEnabled(true);
+				home.TypeBox.setEnabled(true);
+				home.cmbCapacity.setEnabled(true);
+			}
+		});
+		frame.setBounds(100, 100, 487, 706);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.isMaximumSizeSet();
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
+		
 		btnCrt = new JButton("Create");
-		btnCrt.setBounds(554, 630, 141, 21);
+		btnCrt.setBounds(159, 637, 141, 21);
 		btnCrt.setBackground(SystemColor.activeCaption);
 		btnCrt.setForeground(new Color(0, 0, 0));
 		btnCrt.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -97,40 +107,55 @@ public class ElementWindow {
 		lblNumonly = new JLabel("");
 		lblNumonly.setFont(new Font("Sitka Small", Font.BOLD, 11));
 		lblNumonly.setForeground(Color.RED);
-		lblNumonly.setBounds(1001, 637, 153, 14);
+		lblNumonly.setBounds(323, 644, 153, 14);
 		frame.getContentPane().add(lblNumonly);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 2, 2);
-		frame.getContentPane().add(scrollPane);
 		
 		
 		Panel MainPNL = new Panel();
-		MainPNL.setBounds(10, 10, 1176, 614);
+		MainPNL.setBackground(Color.WHITE);
+		MainPNL.setBounds(10, 70, 466, 554);
 		
 		frame.getContentPane().add(MainPNL);
-		MainPNL.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			MainPNL.setLayout(null);
 		
 			
 
 			Panel ElementPNL = new Panel();
+			ElementPNL.setBackground(Color.WHITE);
+			ElementPNL.setBounds(10, 10, 446, 534);
 			MainPNL.add(ElementPNL);
 			ElementPNL.setLayout(new BoxLayout(ElementPNL, BoxLayout.Y_AXIS));
+			
+			Panel panel = new Panel();
+			panel.setBackground(Color.WHITE);
+			panel.setBounds(10, 0, 466, 64);
+			frame.getContentPane().add(panel);
+			panel.setLayout(null);
+			
+			JLabel lblEnterTheElements = new JLabel("Enter The Element's");
+			lblEnterTheElements.setBackground(Color.WHITE);
+			lblEnterTheElements.setHorizontalAlignment(SwingConstants.CENTER);
+			lblEnterTheElements.setFont(new Font("Sitka Banner", Font.BOLD, 50));
+			lblEnterTheElements.setBounds(0, 0, 466, 64);
+			panel.add(lblEnterTheElements);
 			ElementPNL.revalidate();
 						
 		elements = new JTextField[noOfElements];
 		for(int i=0;i<noOfElements;i++) {
 			JPanel panel_2 = new JPanel();
+			panel_2.setBounds(12, 276, 241, 32);
 			ElementPNL.add(panel_2);
-			panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
+			
+			//panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 			
 			JLabel lblNewLabel = new JLabel("Element "+(i+1));
+			lblNewLabel.setFont(new Font("Sitka Heading", Font.BOLD, 24));
 			panel_2.add(lblNewLabel);
 			
-			Component horizontalStrut = Box.createHorizontalStrut(30);
+			Component horizontalStrut = Box.createHorizontalStrut(150);
 			panel_2.add(horizontalStrut);
 			
-			textField = new JTextField();	
+			textField = new JTextField();
 			panel_2.add(textField);
 			textField.setColumns(10);
 			Component Strut = Box.createVerticalStrut(30);

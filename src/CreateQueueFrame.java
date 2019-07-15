@@ -12,10 +12,13 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CreateQueueFrame {
 
-	 public JFrame frame;
+	 protected static final CreateQueueFrame ElementWindow = null;
+	public JFrame frame;
 	 private JTextField textField;
 	 static HomeFrame homeWin;
 	 JLabel lblNewLabel;
@@ -42,7 +45,7 @@ public class CreateQueueFrame {
 	 * Create the application.
 	 */
 	public CreateQueueFrame(HomeFrame home) {
-		this.homeWin=home;
+		CreateQueueFrame.homeWin=home;
 		initialize();
 	}
 
@@ -51,9 +54,17 @@ public class CreateQueueFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				homeWin.btnCrt.setEnabled(true);
+				homeWin.TypeBox.setEnabled(true);
+				homeWin.cmbCapacity.setEnabled(true);
+			}
+		});
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setBounds(100, 100, 661, 340);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
@@ -66,7 +77,7 @@ public class CreateQueueFrame {
 		textField.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent evt) {
 				char c = evt.getKeyChar();
-				if(Character.isLetter(c)  ) {
+				if(Character.isLetter(c)) {
 					textField.setEditable(false);
 					lblNumOnly.setText("Enter Number's Only!");
 				}
@@ -106,8 +117,8 @@ public class CreateQueueFrame {
 				
 				int c = Integer.parseInt(textField.getText().trim().toString());
 				
-				 if(c>homeWin.capacity) {
-					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+")");
+				 if(c>homeWin.capacity  || (c < 0)) {
+					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+") and should always be Greater than Zero!");
 					
 				}
 				else {
@@ -128,7 +139,7 @@ public class CreateQueueFrame {
 		lblNumOnly = new JLabel("");
 		lblNumOnly.setFont(new Font("Sitka Small", Font.BOLD, 14));
 		lblNumOnly.setForeground(Color.RED);
-		lblNumOnly.setBounds(493, 278, 152, 22);
+		lblNumOnly.setBounds(389, 278, 256, 22);
 		frame.getContentPane().add(lblNumOnly);
 		
 		
