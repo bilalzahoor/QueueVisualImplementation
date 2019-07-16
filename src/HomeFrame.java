@@ -63,7 +63,7 @@ public class HomeFrame {
 	private JLabel lblFempty;
 	private String queueType;
 	private Panel EnqueuePanel;
-	private Panel DQInsertAtPNL;
+	Panel DQInsertAtPNL;
 	public Panel DeleteFromPanel;
 	private final ButtonGroup buttonGroupInsert = new ButtonGroup();
 	private final ButtonGroup buttonGroupDelete = new ButtonGroup();
@@ -202,7 +202,7 @@ public class HomeFrame {
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 91));
 		  
 		  EnqueuePanel = new Panel();
-		  EnqueuePanel.setBounds(10, 234, 689, 98);
+		  EnqueuePanel.setBounds(10, 234, 791, 98);
 		  MainPanel.add(EnqueuePanel);
 		  EnqueuePanel.setBackground(SystemColor.controlHighlight);
 		  EnqueuePanel.setLayout(null);
@@ -226,6 +226,7 @@ public class HomeFrame {
 				if(queueType.compareTo("SQ")==0)
 				{
 					insertAtRear();
+					DQInsertAtPNL.setVisible(false);
 			  	}
 				// insert in dequeue
 				else if(queueType.compareTo("DQ")==0)
@@ -242,6 +243,7 @@ public class HomeFrame {
 						}
 						else
 							insertAtRear();
+							
 					}
 					else {
 						//if list contains only one element at index 0 element cannot be inserted at front end
@@ -253,11 +255,12 @@ public class HomeFrame {
 						}
 						 else
 							 insertAtFront();
+						 	lblError.setVisible(false);
 					}
 					
 				}
 				lblFempty.setVisible(true);	
-				DQInsertAtPNL.setVisible(false);
+				
 			}
 	 });
 		  btnInsert.setBounds(516, 62, 116, 25);
@@ -277,30 +280,33 @@ public class HomeFrame {
 		  EnqueuePanel.add(lblFempty);
 		  
 		  DQInsertAtPNL = new Panel();
+		  //DQInsertAtPNL.setEnabled(false);
 		  DQInsertAtPNL.setBackground(SystemColor.controlHighlight);
-		  DQInsertAtPNL.setBounds(705, 234, 308, 98);
+		  DQInsertAtPNL.setBounds(807, 234, 206, 98);
 		  MainPanel.add(DQInsertAtPNL);
 		  DQInsertAtPNL.setLayout(null);
 		  DQInsertAtPNL.setVisible(false);
 		  
 		  rdbtnRear = new JRadioButton("Rear");
+		  rdbtnRear.setEnabled(false);
 		  rdbtnRear.setFont(new Font("Sitka Text", Font.BOLD, 11));
 		  rdbtnRear.setSelected(true);
 		  buttonGroupInsert.add(rdbtnRear);
 		  rdbtnRear.setBackground(SystemColor.controlHighlight);
-		  rdbtnRear.setBounds(29, 40, 87, 23);
+		  rdbtnRear.setBounds(6, 40, 55, 23);
 		  DQInsertAtPNL.add(rdbtnRear);
 		  
 		  rdbtnFront = new JRadioButton("Front");
+		  rdbtnFront.setEnabled(false);
 		  rdbtnFront.setFont(new Font("Sitka Text", Font.BOLD, 11));
 		  buttonGroupInsert.add(rdbtnFront);
 		  rdbtnFront.setBackground(SystemColor.controlHighlight);
-		  rdbtnFront.setBounds(221, 40, 87, 23);
+		  rdbtnFront.setBounds(145, 40, 55, 23);
 		  DQInsertAtPNL.add(rdbtnFront);
 		  
 		  JLabel lblInsertAt = new JLabel("Insert At:");
 		  lblInsertAt.setFont(new Font("Sitka Display", Font.BOLD, 22));
-		  lblInsertAt.setBounds(110, 0, 103, 33);
+		  lblInsertAt.setBounds(58, 0, 103, 33);
 		  DQInsertAtPNL.add(lblInsertAt);
 		  
 		  lblInfoPanel = new JLabel("INFO PANEL");
@@ -342,11 +348,13 @@ public class HomeFrame {
 				if(s.compareTo("Doubly Ended Queue (DEqueue)")==0)
 				{
 					DeleteFromPanel.setVisible(true);
+					DQInsertAtPNL.setVisible(true);
 				queueType="DQ";
 				lblError.setVisible(false);
 				}
 		else if(s.compareTo("Simple Queue")==0) {
 			DeleteFromPanel.setVisible(false);
+			DQInsertAtPNL.setVisible(false);
 			queueType="SQ";
 			lblError.setVisible(false);	
 		}
@@ -437,21 +445,20 @@ public class HomeFrame {
 				lblFempty.setVisible(false);
 				if(queueType.compareTo("SQ")==0) {
 					if(rear==(capacity-1)) {
-			  			
+					
 			  			lblError.setVisible(true);
 			  			lblError.setText("Queue is Full!");
 			  		}
 					else {
 						EnqueuePanel.setVisible(true);
 						txtFieldEnQ.setText(null);
-						DQInsertAtPNL.setVisible(false);
 			  			
 			  		}
 
 				}
 				else if(queueType.compareTo("DQ")==0) {
 					if(rear==(capacity-1) && front==0) {
-			  			
+						
 			  			lblError.setVisible(true);
 			  			lblError.setText("Queue is Full!");
 			  			
@@ -459,7 +466,9 @@ public class HomeFrame {
 					
 					else {
 						EnqueuePanel.setVisible(true);
-						DQInsertAtPNL.setVisible(true);
+						//DQInsertAtPNL.setEnabled(true);
+						rdbtnRear.setEnabled(true);
+						rdbtnFront.setEnabled(true);
 			  			txtFieldEnQ.setText(null);
 			  			
 
@@ -703,6 +712,7 @@ public class HomeFrame {
   			textFieldFront.setText(""+front);
   			
   		}
+		lblError.setVisible(false);
 
 	}
 	void deleteAtFront()

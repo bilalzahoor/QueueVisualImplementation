@@ -28,6 +28,8 @@ public class ElementWindow {
 	static HomeFrame home;
 	JLabel lblNumonly;
 	JButton btnCrt;
+	JScrollPane scrollPane;
+	Panel ElementPNL;
 	/**
 	 * Launch the application.
 	 */
@@ -111,9 +113,10 @@ public class ElementWindow {
 		lblNumonly.setBounds(323, 644, 153, 14);
 		frame.getContentPane().add(lblNumonly);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 70, 466, 554);
 		frame.getContentPane().add(scrollPane);
+		//ElementPNL.revalidate();
 		
 		
 		Panel MainPNL = new Panel();
@@ -123,11 +126,10 @@ public class ElementWindow {
 		
 			
 
-			Panel ElementPNL = new Panel();
+			ElementPNL = new Panel();
 			ElementPNL.setBackground(Color.WHITE);
 			MainPNL.add(ElementPNL);
 			ElementPNL.setLayout(new BoxLayout(ElementPNL, BoxLayout.Y_AXIS));
-			ElementPNL.revalidate();
 			
 			Panel panel = new Panel();
 			panel.setBackground(Color.WHITE);
