@@ -247,18 +247,24 @@ public class HomeFrame {
 					}
 					else {
 						//if list contains only one element at index 0 element cannot be inserted at front end
-						 if(front==0 && rear==0) {
+						 if(front==0) {
 							
 							lblError.setVisible(true);
 				  			lblError.setText("Element cannot be inserted at Front as there is no space!");
 							
 						}
-						 else
+						 else {
 							 insertAtFront();
 						 	lblError.setVisible(false);
+						 }
 					}
 					
 				}
+				else if(queueType.compareTo("CQ")==0)
+				{
+					insertInCircularQueue();
+					DQInsertAtPNL.setVisible(false);
+			  	}
 				lblFempty.setVisible(true);	
 				
 			}
@@ -349,15 +355,24 @@ public class HomeFrame {
 				{
 					DeleteFromPanel.setVisible(true);
 					DQInsertAtPNL.setVisible(true);
-				queueType="DQ";
-				lblError.setVisible(false);
+					queueType="DQ";
+					lblError.setVisible(false);
 				}
-		else if(s.compareTo("Simple Queue")==0) {
-			DeleteFromPanel.setVisible(false);
-			DQInsertAtPNL.setVisible(false);
-			queueType="SQ";
-			lblError.setVisible(false);	
-		}
+				else if(s.compareTo("Simple Queue")==0) {
+					DeleteFromPanel.setVisible(false);
+					DQInsertAtPNL.setVisible(false);
+					queueType="SQ";
+					lblError.setVisible(false);	
+				}
+				else if(s.compareTo("Circular Queue")==0) {
+					DeleteFromPanel.setVisible(false);
+					DQInsertAtPNL.setVisible(false);
+					queueType="CQ";
+					lblError.setVisible(false);	
+					DQInsertAtPNL.setVisible(false);
+					EnqueuePanel.setVisible(false);
+					DeleteFromPanel.setVisible(false);
+				}
 				
 			}
 		});
@@ -443,6 +458,7 @@ public class HomeFrame {
 		
 			public void actionPerformed(ActionEvent arg0) {
 				lblFempty.setVisible(false);
+				
 				if(queueType.compareTo("SQ")==0) {
 					if(rear==(capacity-1)) {
 					
@@ -474,6 +490,19 @@ public class HomeFrame {
 
 			  		}
 				}
+				else if(queueType.compareTo("CQ")==0) {
+					if((rear+1)% capacity==front) {
+					
+			  			lblError.setVisible(true);
+			  			lblError.setText("Queue is Full!");
+			  		}
+					else {
+						EnqueuePanel.setVisible(true);
+						txtFieldEnQ.setText(null);
+			  			
+			  		}
+
+				}
 				
 			}
 		 });
@@ -498,6 +527,9 @@ public class HomeFrame {
 					else {
 						deleteAtRear();
 					}
+				}
+				else if(queueType.compareTo("CQ")==0) {
+					deleteAtCircularQueue();
 				}
 			}
 		});
@@ -670,6 +702,52 @@ public class HomeFrame {
 	  		}
 			
 		}
+	void insertInCircularQueue() {
+		
+		if(txtFieldEnQ.getText().trim().isEmpty())
+		{
+			lblFempty.setText("Field Is Empty!");
+		}
+		// if the queue is empty
+  		else if(rear==-1){
+  			lblError.setVisible(false);
+  			EnqueuePanel.setVisible(false);
+  			
+  			JLabel lbl =(JLabel)elements[rear+1].getComponent(1);
+  			lbl.setText(txtFieldEnQ.getText());
+  			lbl =(JLabel)elements[rear+1].getComponent(2);
+  			lbl.setText("Front/Rear");
+  			rear=rear+1;
+  			front=front+1;
+  			textFieldRear.setText(""+rear);
+  			textFieldFront.setText(""+front);
+  		}
+			//if queue contains at least one element
+  		else if((rear+1)%capacity!=front) {
+  			EnqueuePanel.setVisible(false);
+  			JLabel lbl =(JLabel)elements[(rear+1)%capacity].getComponent(1);
+  			lbl.setText(txtFieldEnQ.getText());
+  			lbl =(JLabel)elements[(rear+1)%capacity].getComponent(2);
+  			lbl.setText("Rear");
+  			lbl =(JLabel)elements[rear].getComponent(2);
+  			// if queue contains only one element
+  			if(front == rear)
+  			{
+  				lbl.setText("Front");
+  				
+  			}
+  			else
+  			
+  				lbl.setText(" ");
+  			rear=(rear+1)%capacity;
+  			textFieldRear.setText(""+rear);
+  			
+  		}
+		
+		
+		
+		
+	}
 	void insertAtFront() {
 		if(txtFieldEnQ.getText().trim().isEmpty())
 		{
@@ -785,4 +863,49 @@ public class HomeFrame {
 			}
 		}
 	}
-}
+	void deleteAtCircularQueue() {
+		if(front==-1)
+		{
+			lblError.setVisible(true);
+			lblError.setText("Queue is Empty!");
+		}
+		else {
+			lblError.setVisible(false);
+  			
+  			JLabel lbl=(JLabel)elements[front].getComponent(1);
+  			lbl.setText("NULL");
+  			lbl=(JLabel)elements[front].getComponent(2);
+  			lbl.setText(" ");
+  			//if array contains more than one element
+  			if(front!=rear) {
+  				lbl=(JLabel)elements[(front+1)%capacity].getComponent(2);
+  				lbl.setText("Front");
+  				front=(front+1)%capacity;
+  				textFieldFront.setText(""+front);
+  			}
+  			//if array contains only one element	
+  			else {
+  				front=-1;
+  				rear=-1;
+  				textFieldFront.setText(""+front);
+  				textFieldRear.setText(""+rear);
+  				
+  			}
+  			
+  			
+			
+		}
+
+	}
+	}
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
