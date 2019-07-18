@@ -30,6 +30,8 @@ public class ElementWindow {
 	JButton btnCrt;
 	JScrollPane scrollPane;
 	Panel ElementPNL;
+	JPanel panel_2 ;
+	JTextField textFieldPrt;
 	/**
 	 * Launch the application.
 	 */
@@ -70,14 +72,14 @@ public class ElementWindow {
 				home.cmbCapacity.setEnabled(true);
 			}
 		});
-		frame.setBounds(100, 100, 487, 706);
+		frame.setBounds(100, 100, 806, 766);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.isMaximumSizeSet();
 		frame.getContentPane().setLayout(null);
-		frame.setResizable(false);
+		//frame.setResizable(false);
 		
 		btnCrt = new JButton("Create");
-		btnCrt.setBounds(159, 637, 141, 21);
+		btnCrt.setBounds(313, 702, 141, 21);
 		btnCrt.setBackground(SystemColor.activeCaption);
 		btnCrt.setForeground(new Color(0, 0, 0));
 		btnCrt.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -110,11 +112,11 @@ public class ElementWindow {
 		lblNumonly = new JLabel("");
 		lblNumonly.setFont(new Font("Sitka Small", Font.BOLD, 11));
 		lblNumonly.setForeground(Color.RED);
-		lblNumonly.setBounds(323, 644, 153, 14);
+		lblNumonly.setBounds(627, 709, 153, 14);
 		frame.getContentPane().add(lblNumonly);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 70, 466, 554);
+		scrollPane.setBounds(10, 70, 770, 621);
 		frame.getContentPane().add(scrollPane);
 		//ElementPNL.revalidate();
 		
@@ -122,7 +124,7 @@ public class ElementWindow {
 		Panel MainPNL = new Panel();
 		scrollPane.setViewportView(MainPNL);
 		MainPNL.setBackground(Color.WHITE);
-			MainPNL.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		MainPNL.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 			
 
@@ -133,7 +135,7 @@ public class ElementWindow {
 			
 			Panel panel = new Panel();
 			panel.setBackground(Color.WHITE);
-			panel.setBounds(10, 0, 466, 64);
+			panel.setBounds(10, 0, 770, 64);
 			frame.getContentPane().add(panel);
 			panel.setLayout(null);
 			
@@ -141,12 +143,12 @@ public class ElementWindow {
 			lblEnterTheElements.setBackground(Color.WHITE);
 			lblEnterTheElements.setHorizontalAlignment(SwingConstants.CENTER);
 			lblEnterTheElements.setFont(new Font("Sitka Banner", Font.BOLD, 50));
-			lblEnterTheElements.setBounds(0, 0, 466, 64);
+			lblEnterTheElements.setBounds(0, 0, 768, 64);
 			panel.add(lblEnterTheElements);
 						
 		elements = new JTextField[noOfElements];
 		for(int i=0;i<noOfElements;i++) {
-			JPanel panel_2 = new JPanel();
+			panel_2 = new JPanel();
 			panel_2.setBounds(12, 276, 241, 32);
 			ElementPNL.add(panel_2);
 			
@@ -156,7 +158,7 @@ public class ElementWindow {
 			lblNewLabel.setFont(new Font("Sitka Heading", Font.BOLD, 24));
 			panel_2.add(lblNewLabel);
 			
-			Component horizontalStrut = Box.createHorizontalStrut(150);
+			Component horizontalStrut = Box.createHorizontalStrut(50);
 			panel_2.add(horizontalStrut);
 			
 			textField = new JTextField();
@@ -165,14 +167,11 @@ public class ElementWindow {
 			Component Strut = Box.createVerticalStrut(30);
 			ElementPNL.add(Strut);
 			elements[i]=textField;
-			
+			}
 		}
-		
-
-	}
+	
 
 	protected void close() {
-		// TODO Auto-generated method stub
 		
 	}
 }

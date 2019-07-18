@@ -17,14 +17,14 @@ import java.awt.event.WindowEvent;
 
 public class CreateQueueFrame {
 
-	 protected static final CreateQueueFrame ElementWindow = null;
+	 
 	public JFrame frame;
-	 private JTextField textField;
-	 static HomeFrame homeWin;
-	 JLabel lblNewLabel;
-	 JButton btnCreate;
-	 JLabel lblCreateError;
-	 private JLabel lblNumOnly;
+	private JTextField textField;
+	static HomeFrame homeWin;
+	JLabel lblNewLabel;
+	JButton btnCreate;
+	JLabel lblCreateError;
+	private JLabel lblNumOnly;
 	/**
 	 * Launch the application.
 	 */
@@ -69,8 +69,8 @@ public class CreateQueueFrame {
 		frame.setResizable(false);
 		
 		lblNewLabel = new JLabel("Enter Number of Elements:");
-		lblNewLabel.setFont(new Font("Sitka Subheading", Font.BOLD, 13));
-		lblNewLabel.setBounds(32, 27, 180, 22);
+		lblNewLabel.setFont(new Font("Sitka Subheading", Font.BOLD, 24));
+		lblNewLabel.setBounds(32, 27, 327, 22);
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
@@ -92,12 +92,12 @@ public class CreateQueueFrame {
 				lblNumOnly.setText("");
 			}
 		});
-		textField.setBounds(272, 27, 116, 22);
+		textField.setBounds(465, 27, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		lblCreateError = new JLabel("");
 		lblCreateError.setForeground(Color.RED);
-		lblCreateError.setBounds(10, 168, 635, 84);
+		lblCreateError.setBounds(10, 264, 635, 36);
 		frame.getContentPane().add(lblCreateError);
 		
 		btnCreate = new JButton("Create");
@@ -111,7 +111,8 @@ public class CreateQueueFrame {
 				
 				if(textField.getText().trim().isEmpty())
 				{
-					lblNumOnly.setText("Field is Empty");
+					lblNumOnly.setText("Field is Empty!");
+					lblCreateError.setText(null);
 				}
 				else {
 				
@@ -119,21 +120,18 @@ public class CreateQueueFrame {
 				
 				 if(c>homeWin.capacity  || (c < 0)) {
 					lblCreateError.setText("Queue size must be less than or equal to Maximum Capacity("+ homeWin.capacity+") and should always be Greater than Zero!");
-					
+					lblNumOnly.setText(null);
 				}
 				else {
 					ElementWindow win = new ElementWindow(c,homeWin);
 					win.frame.setVisible(true);
 					frame.setVisible(false);
 					
-					
 				}
-				
-				
 			}
-			}
-		});
-		btnCreate.setBounds(272, 104, 116, 25);
+		}
+	});
+		btnCreate.setBounds(465, 106, 116, 25);
 		frame.getContentPane().add(btnCreate);
 		
 		lblNumOnly = new JLabel("");
