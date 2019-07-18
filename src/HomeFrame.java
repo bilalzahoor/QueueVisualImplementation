@@ -454,7 +454,7 @@ public class HomeFrame {
 		btnCrt = new JButton("Create");
 		btnCrt.setFont(new Font("Sitka Heading", Font.BOLD, 15));
 		btnCrt.setBackground(SystemColor.inactiveCaption);
-		btnCrt.setBounds(12, 422, 103, 28);
+		btnCrt.setBounds(12, 512, 103, 28);
 		btnCrt.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		btnCrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -474,7 +474,7 @@ public class HomeFrame {
 		cmbCapacity.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		cmbCapacity.setBackground(Color.decode("#bdc3c7"));
 		cmbCapacity.setComponentOrientation(ComponentOrientation.UNKNOWN);
-		cmbCapacity.setBounds(12, 294, 241, 32);
+		cmbCapacity.setBounds(12, 335, 241, 32);
 		cmbCapacity.addItem("5");
 		cmbCapacity.addItem("10");
 		cmbCapacity.addItem("60");
@@ -515,7 +515,7 @@ public class HomeFrame {
 			}
 		});
 		btnDst.setBackground(SystemColor.activeCaption);
-		btnDst.setBounds(150, 422, 103, 28);
+		btnDst.setBounds(150, 512, 103, 28);
 		controlPanel.add(btnDst);
 		btnDst.setEnabled(false);
 		btnDst.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
@@ -576,7 +576,7 @@ public class HomeFrame {
 			}
 		 });
 		btnEnQ.setBackground(SystemColor.activeCaption);
-		btnEnQ.setBounds(12, 494, 103, 28);
+		btnEnQ.setBounds(12, 627, 103, 28);
 		controlPanel.add(btnEnQ);
 		btnEnQ.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		
@@ -604,7 +604,7 @@ public class HomeFrame {
 		});
 		btnDeQ.setEnabled(false);
 		btnDeQ.setBackground(SystemColor.activeCaption);
-		btnDeQ.setBounds(150, 494, 103, 28);
+		btnDeQ.setBounds(152, 627, 103, 28);
 		controlPanel.add(btnDeQ);
 		btnDeQ.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
 		
@@ -626,13 +626,13 @@ public class HomeFrame {
 		lblSelectMaxCapacity.setFont(new Font("Sitka Heading", Font.BOLD, 24));
 		lblSelectMaxCapacity.setForeground(SystemColor.info);
 		lblSelectMaxCapacity.setBackground(SystemColor.windowBorder);
-		lblSelectMaxCapacity.setBounds(12, 242, 243, 41);
+		lblSelectMaxCapacity.setBounds(12, 267, 243, 41);
 		controlPanel.add(lblSelectMaxCapacity);
 		
 		lblOperations = new JLabel("OPERATION'S:");
 		lblOperations.setForeground(SystemColor.info);
-		lblOperations.setFont(new Font("Sitka Heading", Font.BOLD, 26));
-		lblOperations.setBounds(12, 364, 241, 32);
+		lblOperations.setFont(new Font("Sitka Heading", Font.BOLD, 34));
+		lblOperations.setBounds(12, 418, 241, 65);
 		controlPanel.add(lblOperations);
 	}
 	void displayQueue(int n, JTextField[] e) {
