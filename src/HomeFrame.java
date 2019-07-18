@@ -283,6 +283,7 @@ public class HomeFrame {
 		  InfoPanel.add(lblCapacity);
 		  
 		  textFieldCapacity = new JTextField();
+		  textFieldCapacity.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldCapacity.setEditable(false);
 		  textFieldCapacity.setBounds(86, 29, 86, 20);
 		  InfoPanel.add(textFieldCapacity);
@@ -295,6 +296,7 @@ public class HomeFrame {
 		  InfoPanel.add(lblSize);
 		  
 		  textFieldSize = new JTextField();
+		  textFieldSize.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldSize.setEditable(false);
 		  textFieldSize.setBounds(86, 108, 86, 20);
 		  InfoPanel.add(textFieldSize);
@@ -307,6 +309,7 @@ public class HomeFrame {
 		  InfoPanel.add(lblFront);
 		  
 		  textFieldFront = new JTextField();
+		  textFieldFront.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldFront.setEditable(false);
 		  textFieldFront.setBounds(86, 179, 86, 20);
 		  InfoPanel.add(textFieldFront);
@@ -320,6 +323,7 @@ public class HomeFrame {
 		  InfoPanel.add(lblRear);
 		  
 		  textFieldRear = new JTextField();
+		  textFieldRear.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldRear.setEditable(false);
 		  textFieldRear.setBounds(86, 264, 86, 20);
 		  InfoPanel.add(textFieldRear);
