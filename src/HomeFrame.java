@@ -76,6 +76,7 @@ public class HomeFrame {
 	private JLabel lblSelectMaxCapacity;
 	private JLabel lblInfoPanel;
 	private JLabel lblOperations;
+	private Panel panel_2;
 	
 	/**
 	 * Launch the application.
@@ -128,129 +129,10 @@ public class HomeFrame {
 		visualPanel.add(lblDisplay);
 		
 		JPanel MainPanel = new JPanel();
-		MainPanel.setBounds(12, 151, 1023, 475);
+		MainPanel.setBounds(12, 151, 805, 475);
 		MainPanel.setBackground(SystemColor.info);
 		visualPanel.add(MainPanel);
 		MainPanel.setLayout(null);
-		
-		Panel InfoPanel = new Panel();
-		InfoPanel.setBackground(SystemColor.controlHighlight);
-		InfoPanel.setBounds(807, 59, 206, 406);
-		MainPanel.add(InfoPanel);
-		InfoPanel.setLayout(null);
-		
-		JLabel lblCapacity = new JLabel("Capacity:");
-		lblCapacity.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblCapacity.setBackground(Color.WHITE);
-		lblCapacity.setForeground(SystemColor.controlDkShadow);
-		lblCapacity.setBounds(10, 11, 64, 14);
-		InfoPanel.add(lblCapacity);
-		
-		textFieldCapacity = new JTextField();
-		textFieldCapacity.setEditable(false);
-		textFieldCapacity.setBounds(86, 8, 86, 20);
-		InfoPanel.add(textFieldCapacity);
-		textFieldCapacity.setColumns(10);
-		
-		JLabel lblSize = new JLabel("Size:");
-		lblSize.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblSize.setForeground(SystemColor.controlDkShadow);
-		lblSize.setBounds(10, 53, 46, 14);
-		InfoPanel.add(lblSize);
-		
-		textFieldSize = new JTextField();
-		textFieldSize.setEditable(false);
-		textFieldSize.setBounds(86, 50, 86, 20);
-		InfoPanel.add(textFieldSize);
-		textFieldSize.setColumns(10);
-		
-		JLabel lblFront = new JLabel("Front:");
-		lblFront.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFront.setForeground(SystemColor.controlDkShadow);
-		lblFront.setBounds(10, 95, 46, 14);
-		InfoPanel.add(lblFront);
-		
-		textFieldFront = new JTextField();
-		textFieldFront.setEditable(false);
-		textFieldFront.setBounds(86, 92, 86, 20);
-		InfoPanel.add(textFieldFront);
-		textFieldFront.setColumns(10);
-		
-		
-		JLabel lblRear = new JLabel("Rear:");
-		lblRear.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblRear.setForeground(SystemColor.controlDkShadow);
-		lblRear.setBounds(10, 133, 46, 14);
-		InfoPanel.add(lblRear);
-		
-		textFieldRear = new JTextField();
-		textFieldRear.setEditable(false);
-		textFieldRear.setBounds(86, 130, 86, 20);
-		InfoPanel.add(textFieldRear);
-		textFieldRear.setColumns(10);
-		
-		DQInsertAtPNL = new Panel();
-		DQInsertAtPNL.setBounds(0, 204, 206, 103);
-		InfoPanel.add(DQInsertAtPNL);
-		DQInsertAtPNL.setEnabled(false);
-		//DQInsertAtPNL.setEnabled(false);
-		DQInsertAtPNL.setBackground(SystemColor.controlHighlight);
-		DQInsertAtPNL.setLayout(null);
-		DQInsertAtPNL.setVisible(false);
-		
-		rdbtnRear = new JRadioButton("Rear");
-		rdbtnRear.setEnabled(false);
-		rdbtnRear.setFont(new Font("Sitka Text", Font.BOLD, 11));
-		rdbtnRear.setSelected(true);
-		buttonGroupInsert.add(rdbtnRear);
-		rdbtnRear.setBackground(SystemColor.controlHighlight);
-		rdbtnRear.setBounds(6, 40, 55, 23);
-		DQInsertAtPNL.add(rdbtnRear);
-		
-		rdbtnFront = new JRadioButton("Front");
-		rdbtnFront.setEnabled(false);
-		rdbtnFront.setFont(new Font("Sitka Text", Font.BOLD, 11));
-		buttonGroupInsert.add(rdbtnFront);
-		rdbtnFront.setBackground(SystemColor.controlHighlight);
-		rdbtnFront.setBounds(145, 40, 55, 23);
-		DQInsertAtPNL.add(rdbtnFront);
-		
-		JLabel lblInsertAt = new JLabel("Insert At:");
-		lblInsertAt.setFont(new Font("Sitka Display", Font.BOLD, 22));
-		lblInsertAt.setBounds(58, 0, 103, 33);
-		DQInsertAtPNL.add(lblInsertAt);
-		
-		DeleteFromPanel = new Panel();
-		DeleteFromPanel.setBounds(0, 308, 206, 98);
-		InfoPanel.add(DeleteFromPanel);
-		DeleteFromPanel.setEnabled(false);
-		DeleteFromPanel.setBackground(SystemColor.controlDkShadow);
-		DeleteFromPanel.setVisible(false);
-		DeleteFromPanel.setLayout(null);
-		
-		rdbtnDFront = new JRadioButton("Front");
-		rdbtnDFront.setForeground(SystemColor.desktop);
-		rdbtnDFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		rdbtnDFront.setSelected(true);
-		buttonGroupDelete.add(rdbtnDFront);
-		rdbtnDFront.setBackground(SystemColor.controlDkShadow);
-		rdbtnDFront.setBounds(10, 54, 93, 38);
-		DeleteFromPanel.add(rdbtnDFront);
-		
-		JRadioButton rdbtnDRear = new JRadioButton("Rear");
-		rdbtnDRear.setForeground(SystemColor.desktop);
-		rdbtnDRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		buttonGroupDelete.add(rdbtnDRear);
-		rdbtnDRear.setBackground(SystemColor.controlDkShadow);
-		rdbtnDRear.setBounds(120, 54, 86, 38);
-		DeleteFromPanel.add(rdbtnDRear);
-		
-		JLabel lblDeleteFrom = new JLabel("Delete From:");
-		lblDeleteFrom.setForeground(SystemColor.info);
-		lblDeleteFrom.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 22));
-		lblDeleteFrom.setBounds(0, 11, 206, 36);
-		DeleteFromPanel.add(lblDeleteFrom);
 		 
 		 JScrollPane scrollPane = new JScrollPane();
 		 scrollPane.setBounds(10, 11, 791, 350);
@@ -360,14 +242,6 @@ public class HomeFrame {
 		  lblFempty.setBounds(56, 68, 165, 19);
 		  EnqueuePanel.add(lblFempty);
 		  
-		  lblInfoPanel = new JLabel("INFO PANEL");
-		  lblInfoPanel.setBackground(SystemColor.info);
-		  lblInfoPanel.setFont(new Font("Sitka Display", Font.BOLD, 26));
-		  lblInfoPanel.setForeground(SystemColor.controlDkShadow);
-		  lblInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblInfoPanel.setBounds(807, 11, 206, 42);
-		  MainPanel.add(lblInfoPanel);
-		  
 		  Panel ErrPNL = new Panel();
 		  ErrPNL.setBounds(0, 632, 1047, 89);
 		  visualPanel.add(ErrPNL);
@@ -380,6 +254,146 @@ public class HomeFrame {
 		  lblError.setBounds(0, 0, 1047, 82);
 		  lblError.setVisible(false);
 		  ErrPNL.add(lblError);
+		  
+		  Panel panel = new Panel();
+		  panel.setBounds(821, 151, 208, 358);
+		  visualPanel.add(panel);
+		  panel.setBackground(SystemColor.info);
+		  panel.setLayout(null);
+		  
+		  lblInfoPanel = new JLabel("INFO PANEL");
+		  lblInfoPanel.setBounds(33, 5, 140, 33);
+		  panel.add(lblInfoPanel);
+		  lblInfoPanel.setBackground(SystemColor.info);
+		  lblInfoPanel.setFont(new Font("Sitka Display", Font.BOLD, 26));
+		  lblInfoPanel.setForeground(SystemColor.controlDkShadow);
+		  lblInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
+		  
+		  Panel InfoPanel = new Panel();
+		  InfoPanel.setBounds(0, 37, 206, 319);
+		  panel.add(InfoPanel);
+		  InfoPanel.setBackground(SystemColor.controlHighlight);
+		  InfoPanel.setLayout(null);
+		  
+		  JLabel lblCapacity = new JLabel("Capacity:");
+		  lblCapacity.setFont(new Font("Tahoma", Font.BOLD, 13));
+		  lblCapacity.setBackground(Color.WHITE);
+		  lblCapacity.setForeground(SystemColor.controlDkShadow);
+		  lblCapacity.setBounds(10, 31, 64, 14);
+		  InfoPanel.add(lblCapacity);
+		  
+		  textFieldCapacity = new JTextField();
+		  textFieldCapacity.setEditable(false);
+		  textFieldCapacity.setBounds(86, 29, 86, 20);
+		  InfoPanel.add(textFieldCapacity);
+		  textFieldCapacity.setColumns(10);
+		  
+		  JLabel lblSize = new JLabel("Size:");
+		  lblSize.setFont(new Font("Tahoma", Font.BOLD, 13));
+		  lblSize.setForeground(SystemColor.controlDkShadow);
+		  lblSize.setBounds(10, 110, 46, 14);
+		  InfoPanel.add(lblSize);
+		  
+		  textFieldSize = new JTextField();
+		  textFieldSize.setEditable(false);
+		  textFieldSize.setBounds(86, 108, 86, 20);
+		  InfoPanel.add(textFieldSize);
+		  textFieldSize.setColumns(10);
+		  
+		  JLabel lblFront = new JLabel("Front:");
+		  lblFront.setFont(new Font("Tahoma", Font.BOLD, 13));
+		  lblFront.setForeground(SystemColor.controlDkShadow);
+		  lblFront.setBounds(10, 181, 46, 14);
+		  InfoPanel.add(lblFront);
+		  
+		  textFieldFront = new JTextField();
+		  textFieldFront.setEditable(false);
+		  textFieldFront.setBounds(86, 179, 86, 20);
+		  InfoPanel.add(textFieldFront);
+		  textFieldFront.setColumns(10);
+		  
+		  
+		  JLabel lblRear = new JLabel("Rear:");
+		  lblRear.setFont(new Font("Tahoma", Font.BOLD, 13));
+		  lblRear.setForeground(SystemColor.controlDkShadow);
+		  lblRear.setBounds(10, 266, 46, 14);
+		  InfoPanel.add(lblRear);
+		  
+		  textFieldRear = new JTextField();
+		  textFieldRear.setEditable(false);
+		  textFieldRear.setBounds(86, 264, 86, 20);
+		  InfoPanel.add(textFieldRear);
+		  textFieldRear.setColumns(10);
+		  
+		  panel_2 = new Panel();
+		  panel_2.setBackground(SystemColor.info);
+		  panel_2.setBounds(821, 512, 208, 114);
+		  visualPanel.add(panel_2);
+		  panel_2.setLayout(null);
+		  
+		  DQInsertAtPNL = new Panel();
+		  DQInsertAtPNL.setBounds(0, 0, 206, 50);
+		  panel_2.add(DQInsertAtPNL);
+		  DQInsertAtPNL.setEnabled(false);
+		  //DQInsertAtPNL.setEnabled(false);
+		  DQInsertAtPNL.setBackground(SystemColor.controlHighlight);
+		  DQInsertAtPNL.setLayout(null);
+		  DQInsertAtPNL.setVisible(false);
+		  
+		  rdbtnRear = new JRadioButton("Rear");
+		  rdbtnRear.setEnabled(false);
+		  rdbtnRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		  rdbtnRear.setSelected(true);
+		  buttonGroupInsert.add(rdbtnRear);
+		  rdbtnRear.setBackground(SystemColor.controlHighlight);
+		  rdbtnRear.setBounds(0, 29, 82, 14);
+		  DQInsertAtPNL.add(rdbtnRear);
+		  
+		  rdbtnFront = new JRadioButton("Front");
+		  rdbtnFront.setEnabled(false);
+		  rdbtnFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		  buttonGroupInsert.add(rdbtnFront);
+		  rdbtnFront.setBackground(SystemColor.controlHighlight);
+		  rdbtnFront.setBounds(113, 29, 87, 14);
+		  DQInsertAtPNL.add(rdbtnFront);
+		  
+		  JLabel lblInsertAt = new JLabel("Insert At:");
+		  lblInsertAt.setFont(new Font("Sitka Display", Font.BOLD, 22));
+		  lblInsertAt.setBounds(58, 0, 103, 33);
+		  DQInsertAtPNL.add(lblInsertAt);
+		  
+		  DeleteFromPanel = new Panel();
+		  DeleteFromPanel.setBounds(0, 56, 206, 61);
+		  panel_2.add(DeleteFromPanel);
+		  DeleteFromPanel.setEnabled(false);
+		  DeleteFromPanel.setBackground(SystemColor.controlHighlight);
+		  DeleteFromPanel.setVisible(false);
+		  DeleteFromPanel.setLayout(null);
+		  
+		  rdbtnDFront = new JRadioButton("Front");
+		  rdbtnDFront.setForeground(SystemColor.desktop);
+		  rdbtnDFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		  rdbtnDFront.setSelected(true);
+		  buttonGroupDelete.add(rdbtnDFront);
+		  rdbtnDFront.setBackground(SystemColor.controlHighlight);
+		  rdbtnDFront.setBounds(0, 31, 82, 23);
+		  DeleteFromPanel.add(rdbtnDFront);
+		  
+		  JRadioButton rdbtnDRear = new JRadioButton("Rear");
+		  rdbtnDRear.setForeground(SystemColor.desktop);
+		  rdbtnDRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		  buttonGroupDelete.add(rdbtnDRear);
+		  rdbtnDRear.setBackground(SystemColor.controlHighlight);
+		  rdbtnDRear.setBounds(117, 31, 89, 23);
+		  DeleteFromPanel.add(rdbtnDRear);
+		  
+		  JLabel lblDeleteFrom = new JLabel("Delete From:");
+		  lblDeleteFrom.setBackground(SystemColor.controlHighlight);
+		  lblDeleteFrom.setForeground(SystemColor.desktop);
+		  lblDeleteFrom.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 22));
+		  lblDeleteFrom.setBounds(0, 0, 206, 33);
+		  DeleteFromPanel.add(lblDeleteFrom);
 		 // lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
 		Panel controlPanel = new Panel();
