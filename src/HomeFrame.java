@@ -135,7 +135,7 @@ public class HomeFrame {
 		
 		Panel InfoPanel = new Panel();
 		InfoPanel.setBackground(SystemColor.controlHighlight);
-		InfoPanel.setBounds(807, 59, 206, 302);
+		InfoPanel.setBounds(807, 59, 206, 406);
 		MainPanel.add(InfoPanel);
 		InfoPanel.setLayout(null);
 		
@@ -190,7 +190,7 @@ public class HomeFrame {
 		textFieldRear.setColumns(10);
 		
 		DQInsertAtPNL = new Panel();
-		DQInsertAtPNL.setBounds(0, 204, 206, 98);
+		DQInsertAtPNL.setBounds(0, 204, 206, 103);
 		InfoPanel.add(DQInsertAtPNL);
 		DQInsertAtPNL.setEnabled(false);
 		//DQInsertAtPNL.setEnabled(false);
@@ -219,6 +219,38 @@ public class HomeFrame {
 		lblInsertAt.setFont(new Font("Sitka Display", Font.BOLD, 22));
 		lblInsertAt.setBounds(58, 0, 103, 33);
 		DQInsertAtPNL.add(lblInsertAt);
+		
+		DeleteFromPanel = new Panel();
+		DeleteFromPanel.setBounds(0, 308, 206, 98);
+		InfoPanel.add(DeleteFromPanel);
+		DeleteFromPanel.setEnabled(false);
+		DeleteFromPanel.setBackground(SystemColor.controlDkShadow);
+		DeleteFromPanel.setVisible(false);
+		DeleteFromPanel.setLayout(null);
+		
+		rdbtnDFront = new JRadioButton("Front");
+		rdbtnDFront.setForeground(SystemColor.desktop);
+		rdbtnDFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		rdbtnDFront.setSelected(true);
+		buttonGroupDelete.add(rdbtnDFront);
+		rdbtnDFront.setBackground(SystemColor.controlDkShadow);
+		rdbtnDFront.setBounds(10, 54, 93, 38);
+		DeleteFromPanel.add(rdbtnDFront);
+		
+		JRadioButton rdbtnDRear = new JRadioButton("Rear");
+		rdbtnDRear.setForeground(SystemColor.desktop);
+		rdbtnDRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
+		buttonGroupDelete.add(rdbtnDRear);
+		rdbtnDRear.setBackground(SystemColor.controlDkShadow);
+		rdbtnDRear.setBounds(120, 54, 86, 38);
+		DeleteFromPanel.add(rdbtnDRear);
+		
+		JLabel lblDeleteFrom = new JLabel("Delete From:");
+		lblDeleteFrom.setForeground(SystemColor.info);
+		lblDeleteFrom.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 22));
+		lblDeleteFrom.setBounds(0, 11, 206, 36);
+		DeleteFromPanel.add(lblDeleteFrom);
 		 
 		 JScrollPane scrollPane = new JScrollPane();
 		 scrollPane.setBounds(10, 11, 791, 350);
@@ -236,9 +268,11 @@ public class HomeFrame {
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 91));
+		  panelQueue.setVisible(true);
 		  
 		  EnqueuePanel = new Panel();
-		  panel_1.add(EnqueuePanel);
+		  EnqueuePanel.setBounds(10, 367, 791, 98);
+		  MainPanel.add(EnqueuePanel);
 		  EnqueuePanel.setBackground(SystemColor.controlHighlight);
 		  EnqueuePanel.setLayout(null);
 		  EnqueuePanel.setVisible(false);
@@ -247,15 +281,15 @@ public class HomeFrame {
 		  txtFieldEnQ.setBounds(625, 26, 116, 22);
 		  EnqueuePanel.add(txtFieldEnQ);
 		  txtFieldEnQ.setColumns(10);
+		 
 		  
-		   
-		   btnInsert = new JButton("Insert.");
-		   btnInsert.setFont(new Font("Sitka Text", Font.BOLD, 16));
-		   btnInsert.setBackground(SystemColor.activeCaption);
-		   btnInsert.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
-		   btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
-		   btnInsert.addActionListener(new ActionListener() {
-		   	
+		  btnInsert = new JButton("Insert.");
+		  btnInsert.setFont(new Font("Sitka Text", Font.BOLD, 16));
+		  btnInsert.setBackground(SystemColor.activeCaption);
+		  btnInsert.setBorder(new BevelBorder(BevelBorder.RAISED, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder, SystemColor.windowBorder));
+		  btnInsert.setAlignmentX(Component.CENTER_ALIGNMENT);
+		  btnInsert.addActionListener(new ActionListener() {
+		  	
 			public void actionPerformed(ActionEvent mv) {
 				// insert into the simple queue
 				if(queueType.compareTo("SQ")==0)
@@ -308,24 +342,23 @@ public class HomeFrame {
 				
 			}
 	 });
-		   
-		   
-		   btnInsert.setBounds(625, 62, 116, 25);
-		   EnqueuePanel.add(btnInsert);
-		   
-		   lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
-		   lblEnterTheElement.setHorizontalAlignment(SwingConstants.CENTER);
-		   lblEnterTheElement.setBounds(46, 25, 272, 23);
-		   EnqueuePanel.add(lblEnterTheElement);
-		   lblEnterTheElement.setBackground(SystemColor.controlHighlight);
-		   lblEnterTheElement.setForeground(SystemColor.desktop);
-		   lblEnterTheElement.setFont(new Font("Sitka Subheading", Font.BOLD, 16));
-		   
-		   lblFempty = new JLabel("");
-		   lblFempty.setForeground(Color.RED);
-		   lblFempty.setBounds(56, 68, 165, 19);
-		   EnqueuePanel.add(lblFempty);
-		  panelQueue.setVisible(true);
+		  
+		  
+		  btnInsert.setBounds(625, 62, 116, 25);
+		  EnqueuePanel.add(btnInsert);
+		  
+		  lblEnterTheElement = new JLabel("Enter the Element to be Inserted: ");
+		  lblEnterTheElement.setHorizontalAlignment(SwingConstants.CENTER);
+		  lblEnterTheElement.setBounds(46, 25, 272, 23);
+		  EnqueuePanel.add(lblEnterTheElement);
+		  lblEnterTheElement.setBackground(SystemColor.controlHighlight);
+		  lblEnterTheElement.setForeground(SystemColor.desktop);
+		  lblEnterTheElement.setFont(new Font("Sitka Subheading", Font.BOLD, 16));
+		  
+		  lblFempty = new JLabel("");
+		  lblFempty.setForeground(Color.RED);
+		  lblFempty.setBounds(56, 68, 165, 19);
+		  EnqueuePanel.add(lblFempty);
 		  
 		  lblInfoPanel = new JLabel("INFO PANEL");
 		  lblInfoPanel.setBackground(SystemColor.info);
@@ -334,38 +367,6 @@ public class HomeFrame {
 		  lblInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblInfoPanel.setBounds(807, 11, 206, 42);
 		  MainPanel.add(lblInfoPanel);
-		  
-		  DeleteFromPanel = new Panel();
-		  DeleteFromPanel.setBounds(807, 367, 206, 98);
-		  MainPanel.add(DeleteFromPanel);
-		  DeleteFromPanel.setEnabled(false);
-		  DeleteFromPanel.setBackground(SystemColor.controlDkShadow);
-		  DeleteFromPanel.setVisible(false);
-		  DeleteFromPanel.setLayout(null);
-		  
-		  rdbtnDFront = new JRadioButton("Front");
-		  rdbtnDFront.setForeground(SystemColor.desktop);
-		  rdbtnDFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		  rdbtnDFront.setSelected(true);
-		  buttonGroupDelete.add(rdbtnDFront);
-		  rdbtnDFront.setBackground(SystemColor.controlDkShadow);
-		  rdbtnDFront.setBounds(10, 54, 93, 38);
-		  DeleteFromPanel.add(rdbtnDFront);
-		  
-		  JRadioButton rdbtnDRear = new JRadioButton("Rear");
-		  rdbtnDRear.setForeground(SystemColor.desktop);
-		  rdbtnDRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
-		  buttonGroupDelete.add(rdbtnDRear);
-		  rdbtnDRear.setBackground(SystemColor.controlDkShadow);
-		  rdbtnDRear.setBounds(120, 54, 86, 38);
-		  DeleteFromPanel.add(rdbtnDRear);
-		  
-		  JLabel lblDeleteFrom = new JLabel("Delete From:");
-		  lblDeleteFrom.setForeground(SystemColor.info);
-		  lblDeleteFrom.setHorizontalAlignment(SwingConstants.CENTER);
-		  lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 22));
-		  lblDeleteFrom.setBounds(0, 11, 206, 36);
-		  DeleteFromPanel.add(lblDeleteFrom);
 		  
 		  Panel ErrPNL = new Panel();
 		  ErrPNL.setBounds(0, 632, 1047, 89);
