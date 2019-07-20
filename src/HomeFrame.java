@@ -77,6 +77,7 @@ public class HomeFrame {
 	private JLabel lblInfoPanel;
 	private JLabel lblOperations;
 	private Panel panel_2;
+	JComboBox<String> cmbPriority;
 	
 	/**
 	 * Launch the application.
@@ -158,6 +159,9 @@ public class HomeFrame {
 		  EnqueuePanel.setBackground(SystemColor.controlHighlight);
 		  EnqueuePanel.setLayout(null);
 		  EnqueuePanel.setVisible(false);
+		  cmbPriority = new JComboBox<String>();
+		  cmbPriority.setBounds(551, 26, 31, 22);
+		  EnqueuePanel.add(cmbPriority);
 		  
 		  txtFieldEnQ = new JTextField();
 		  txtFieldEnQ.setBounds(625, 26, 116, 22);
@@ -241,6 +245,7 @@ public class HomeFrame {
 		  lblFempty.setForeground(Color.RED);
 		  lblFempty.setBounds(56, 68, 165, 19);
 		  EnqueuePanel.add(lblFempty);
+		
 		  
 		  Panel ErrPNL = new Panel();
 		  ErrPNL.setBounds(0, 632, 1047, 89);
@@ -398,8 +403,13 @@ public class HomeFrame {
 		  lblDeleteFrom.setFont(new Font("Sitka Display", Font.BOLD, 22));
 		  lblDeleteFrom.setBounds(0, 0, 206, 33);
 		  DeleteFromPanel.add(lblDeleteFrom);
+		  
+		
 		 // lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
+		  for(int i=0;i<capacity;i++){
+				cmbPriority.addItem(i+"");
+			}
 		Panel controlPanel = new Panel();
 		controlPanel.setBackground(Color.decode("#2F2F2F"));
 		controlPanel.setBounds(1053, 0, 265, 721);
@@ -487,7 +497,10 @@ public class HomeFrame {
 			public void actionPerformed(ActionEvent arg0) {
 						String s= cmbCapacity.getSelectedItem().toString();
 						capacity=Integer.parseInt(s);
-					
+						cmbPriority.removeAllItems();
+						for(int i=0;i<capacity;i++){
+							cmbPriority.addItem(i+"");
+						}
 			}
 		});
 		
