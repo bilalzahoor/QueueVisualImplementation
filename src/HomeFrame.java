@@ -35,6 +35,7 @@ public class HomeFrame {
 	private JFrame frame;
 	JButton btnDst;
 	public int capacity;
+	public int size;
 	JComboBox<String> cmbCapacity;
 	JLabel lblDisplay;
 	JLabel lblElement;
@@ -160,7 +161,7 @@ public class HomeFrame {
 		  EnqueuePanel.setLayout(null);
 		  EnqueuePanel.setVisible(false);
 		  cmbPriority = new JComboBox<String>();
-		  cmbPriority.setBounds(551, 26, 31, 22);
+		  cmbPriority.setBounds(551, 26, 62, 22);
 		  EnqueuePanel.add(cmbPriority);
 		  
 		  txtFieldEnQ = new JTextField();
@@ -224,6 +225,10 @@ public class HomeFrame {
 				{
 					insertInCircularQueue();
 			  	}
+				else {
+					insertInPriorityQueue(Integer.parseInt((String) cmbPriority.getSelectedItem()));
+					
+				}
 					
 				
 			}
@@ -450,7 +455,7 @@ public class HomeFrame {
 				else if(s.compareTo("Priority Queue")==0) {
 					DeleteFromPanel.setVisible(false);
 					DQInsertAtPNL.setVisible(false);
-					queueType="CQ";
+					queueType="PQ";
 					lblError.setVisible(false);	
 					DQInsertAtPNL.setVisible(false);
 					EnqueuePanel.setVisible(false);
@@ -558,6 +563,20 @@ public class HomeFrame {
 			  		}
 
 				}
+				else if(queueType.compareTo("PQ")==0) {
+					if(rear==(capacity-1)) {
+					
+			  			lblError.setVisible(true);
+			  			lblError.setText("Queue is Full!");
+			  		}
+					else {
+						EnqueuePanel.setVisible(true);
+						txtFieldEnQ.setText(null);
+			  			
+			  		}
+
+				}
+
 				else if(queueType.compareTo("DQ")==0) {
 					if(rear==(capacity-1) && front==0) {
 						
@@ -653,8 +672,9 @@ public class HomeFrame {
 		controlPanel.add(lblOperations);
 	}
 	void displayQueue(int n, JTextField[] e) {
-		
-		elements=new JPanel[capacity];
+		size=n;
+		if(elements==null)
+			elements=new JPanel[capacity];
 		
 		Component horizontalStrut = Box.createHorizontalStrut(150);
 		panelQueue.add(horizontalStrut);
@@ -877,6 +897,36 @@ public class HomeFrame {
   			
   		}
 		lblError.setVisible(false);
+
+	}
+	void insertInPriorityQueue(int p) {
+		if(txtFieldEnQ.getText().trim().isEmpty())
+		{
+			lblFempty.setText("Field Is Empty");
+		}
+		else {
+			lblError.setVisible(false);
+  			EnqueuePanel.setVisible(false);
+  			JLabel lblData;
+  			JLabel lblPointer;
+			for(int i =size-1;i>p;i--) {
+				lblData =(JLabel)elements[i].getComponent(1);
+				lblPointer=(JLabel)elements[i].getComponent(2);
+				((JLabel)elements[i+1].getComponent(1)).setText(lblData.getText());
+				((JLabel)elements[i+1].getComponent(2)).setText(lblPointer.getText());
+			}
+			((JLabel)elements[p].getComponent(1)).setText(txtFieldEnQ.getText());
+			if(front==-1 && rear==-1) {
+				((JLabel)elements[p].getComponent(2)).setText("Front/Rear");
+				rear=rear+1;
+	  			front=front+1;
+	  			textFieldRear.setText(""+rear);
+	  			textFieldFront.setText(""+front);
+			}
+			size++;
+			
+		}
+				lblError.setVisible(false);
 
 	}
 	void deleteAtFront()
