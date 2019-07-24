@@ -636,6 +636,12 @@ public class HomeFrame {
 				else if(queueType.compareTo("CQ")==0) {
 					deleteAtCircularQueue();
 				}
+				else if(queueType.compareTo("PQ")==0){
+					deleteInPriorityQueue(0);
+					
+					
+					
+				}
 			}
 		});
 		btnDeQ.setEnabled(false);
@@ -898,6 +904,43 @@ public class HomeFrame {
   		}
 		lblError.setVisible(false);
 
+	}
+	void deleteInPriorityQueue(int p) {
+		if(front==-1)
+		{
+			lblError.setVisible(true);
+			lblError.setText("Queue is Empty!");
+		}
+		else {
+			lblError.setVisible(false);
+  			//EnqueuePanel.setVisible(false);
+  			JLabel lblData;
+  			JLabel lblPointer;
+  			int i;
+			for(i =p+1;i<size;i++) {
+				lblData =(JLabel)elements[i].getComponent(1);
+				lblPointer=(JLabel)elements[i].getComponent(2);
+				((JLabel)elements[i-1].getComponent(1)).setText(lblData.getText());
+				
+				if(((JLabel)elements[i-1].getComponent(2)).getText().compareTo("Front")!=0)
+					((JLabel)elements[i-1].getComponent(2)).setText(lblPointer.getText());
+			}
+			((JLabel)elements[i-1].getComponent(1)).setText("NULL");
+			((JLabel)elements[i-1].getComponent(2)).setText("");
+			if(front== rear) {
+				rear=-1;
+	  			front=-1;
+	  			textFieldRear.setText(""+rear);
+	  			textFieldFront.setText(""+front);
+			}
+			size--;
+			
+		}
+				lblError.setVisible(false);
+
+		
+		
+		
 	}
 	void insertInPriorityQueue(int p) {
 		if(txtFieldEnQ.getText().trim().isEmpty())
