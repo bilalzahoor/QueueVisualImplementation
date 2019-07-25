@@ -77,6 +77,7 @@ public class ElementWindow {
 		frame.isMaximumSizeSet();
 		frame.getContentPane().setLayout(null);
 		//frame.setResizable(false);
+		frame.setTitle("ElementWindow");
 		
 		btnCrt = new JButton("Create");
 		btnCrt.setBounds(313, 702, 141, 21);
