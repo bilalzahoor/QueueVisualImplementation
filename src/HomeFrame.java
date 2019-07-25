@@ -156,13 +156,13 @@ public class HomeFrame {
 		  panelQueue.add(horizontalStrut_1);
 		  
 		  lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
-		  lblQueueIsEmpty.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (5).png"));
+		  lblQueueIsEmpty.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (5).png"));
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 91));
 		  
 		  IconDsQ1 = new JLabel("");
-		  IconDsQ1.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (5).png"));
+		  IconDsQ1.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (5).png"));
 		  panel_1.add(IconDsQ1);
 		  panelQueue.setVisible(true);
 		  
@@ -433,7 +433,7 @@ public class HomeFrame {
 		  DeleteFromPanel.add(lblDeleteFrom);
 		  
 		  IconDsQ = new JLabel("");
-		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (1).png"));
+		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (1).png"));
 		  IconDsQ.setBounds(847, 48, 58, 76);
 		  visualPanel.add(IconDsQ);
 		  
@@ -713,7 +713,7 @@ public class HomeFrame {
 		controlPanel.add(lblOperations);
 		
 		JLabel IconTK = new JLabel("");
-		IconTK.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (2).png"));
+		IconTK.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (2).png"));
 		IconTK.setBounds(93, 11, 88, 85);
 		controlPanel.add(IconTK);
 	}
