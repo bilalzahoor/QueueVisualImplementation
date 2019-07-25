@@ -67,7 +67,7 @@ public class CreateQueueFrame {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
-		frame.setTitle("CreateQueueFrame");
+		frame.setTitle("CreateQueueFrame.");
 		
 		lblNewLabel = new JLabel("Enter Number of Elements:");
 		lblNewLabel.setFont(new Font("Sitka Subheading", Font.BOLD, 24));

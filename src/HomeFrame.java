@@ -28,7 +28,6 @@ import java.awt.event.ItemEvent;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import java.awt.Label;
 
 public class HomeFrame {
 
@@ -60,6 +59,7 @@ public class HomeFrame {
 	JLabel lblempty;
 	JRadioButton rdbtnFront;
 	JRadioButton rdbtnDFront;
+	JLabel IconDsQ1;
 	private JTextField textFieldCapacity;
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
@@ -80,6 +80,8 @@ public class HomeFrame {
 	private Panel panel_2;
 	JComboBox<String> cmbPriority;
 	private Component horizontalStrut_1;
+	private JLabel IconDsQ;
+	private JLabel label;
 	
 	/**
 	 * Launch the application.
@@ -150,13 +152,18 @@ public class HomeFrame {
 		  panel_1.add(panelQueue);
 		  panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
 		  
-		  horizontalStrut_1 = Box.createHorizontalStrut(245);
+		  horizontalStrut_1 = Box.createHorizontalStrut(120);
 		  panelQueue.add(horizontalStrut_1);
 		  
 		  lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		  lblQueueIsEmpty.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (5).png"));
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 91));
+		  
+		  IconDsQ1 = new JLabel("");
+		  IconDsQ1.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (5).png"));
+		  panel_1.add(IconDsQ1);
 		  panelQueue.setVisible(true);
 		  
 		  EnqueuePanel = new Panel();
@@ -414,6 +421,11 @@ public class HomeFrame {
 		  lblDeleteFrom.setBounds(36, 2, 206, 33);
 		  DeleteFromPanel.add(lblDeleteFrom);
 		  
+		  IconDsQ = new JLabel("");
+		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (1).png"));
+		  IconDsQ.setBounds(708, 50, 51, 76);
+		  visualPanel.add(IconDsQ);
+		  
 		
 		 // lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
@@ -528,7 +540,8 @@ public class HomeFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				lblQueueIsEmpty.setVisible(true);
 				panelQueue.removeAll();
-				horizontalStrut_1 = Box.createHorizontalStrut(245);
+				IconDsQ1.setVisible(true);
+				horizontalStrut_1 = Box.createHorizontalStrut(120);
 				panelQueue.add(horizontalStrut_1);
 				elements=null;
 				textFieldCapacity.setText("");
@@ -665,7 +678,7 @@ public class HomeFrame {
 		TKitHeadings.setForeground(Color.decode("#e67e22"));
 		TKitHeadings.setFont(new Font("Sitka Banner", Font.BOLD, 82));
 		TKitHeadings.setHorizontalAlignment(SwingConstants.CENTER);
-		TKitHeadings.setBounds(12, 11, 241, 216);
+		TKitHeadings.setBounds(12, 100, 241, 127);
 		controlPanel.add(TKitHeadings);
 		
 		JLabel lblSelectType = new JLabel("Select Type: ");
@@ -687,6 +700,11 @@ public class HomeFrame {
 		lblOperations.setFont(new Font("Sitka Heading", Font.BOLD, 38));
 		lblOperations.setBounds(12, 603, 253, 92);
 		controlPanel.add(lblOperations);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Zubair\\img\\Webp.net-resizeimage (2).png"));
+		label.setBounds(92, 11, 82, 83);
+		controlPanel.add(label);
 	}
 	void displayQueue(int n, JTextField[] e) {
 		size=n;
