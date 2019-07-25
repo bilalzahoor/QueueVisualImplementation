@@ -80,7 +80,6 @@ public class HomeFrame {
 	private Panel panel_2;
 	JComboBox<String> cmbPriority;
 	private Component horizontalStrut_1;
-	private JLabel IconDsQ;
 	
 	/**
 	 * Launch the application.
@@ -415,11 +414,6 @@ public class HomeFrame {
 		  lblDeleteFrom.setBounds(36, 2, 206, 33);
 		  DeleteFromPanel.add(lblDeleteFrom);
 		  
-		  IconDsQ = new JLabel("");
-		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\Downloads\\Webp.net-resizeimage (1).png"));
-		  IconDsQ.setBounds(847, 48, 58, 76);
-		  visualPanel.add(IconDsQ);
-		  
 		
 		 // lblQueueIsEmpty_1.setVisible(false);
 		capacity= 5;
@@ -693,11 +687,6 @@ public class HomeFrame {
 		lblOperations.setFont(new Font("Sitka Heading", Font.BOLD, 38));
 		lblOperations.setBounds(12, 603, 253, 92);
 		controlPanel.add(lblOperations);
-		
-		JLabel IconTK = new JLabel("");
-		IconTK.setIcon(new ImageIcon("C:\\Users\\Zubair\\Downloads\\Webp.net-resizeimage (2).png"));
-		IconTK.setBounds(93, 11, 88, 85);
-		controlPanel.add(IconTK);
 	}
 	void displayQueue(int n, JTextField[] e) {
 		size=n;
