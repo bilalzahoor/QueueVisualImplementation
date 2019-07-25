@@ -28,7 +28,6 @@ import java.awt.event.ItemEvent;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import java.awt.Label;
 
 public class HomeFrame {
 
@@ -55,11 +54,13 @@ public class HomeFrame {
 	JPanel panelElement;
 	JPanel panelDetls;
 	JRadioButton rdbtnRear;
+	JRadioButton rdbtnDRear;
 	JButton btnInsert;
 	JComboBox TypeBox;
 	JLabel lblempty;
 	JRadioButton rdbtnFront;
 	JRadioButton rdbtnDFront;
+	JLabel IconDsQ1;
 	private JTextField textFieldCapacity;
 	private JTextField textFieldSize;
 	private JTextField textFieldRear;
@@ -151,13 +152,18 @@ public class HomeFrame {
 		  panel_1.add(panelQueue);
 		  panelQueue.setLayout(new BoxLayout(panelQueue, BoxLayout.X_AXIS));
 		  
-		  horizontalStrut_1 = Box.createHorizontalStrut(245);
+		  horizontalStrut_1 = Box.createHorizontalStrut(130);
 		  panelQueue.add(horizontalStrut_1);
 		  
 		  lblQueueIsEmpty = new JLabel("QUEUE IS EMPTY");
+		  lblQueueIsEmpty.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (5).png"));
 		  panel_1.add(lblQueueIsEmpty);
 		  lblQueueIsEmpty.setHorizontalAlignment(SwingConstants.CENTER);
 		  lblQueueIsEmpty.setFont(new Font("Tahoma", Font.BOLD, 91));
+		  
+		  IconDsQ1 = new JLabel("");
+		  IconDsQ1.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (5).png"));
+		  panel_1.add(IconDsQ1);
 		  panelQueue.setVisible(true);
 		  
 		  EnqueuePanel = new Panel();
@@ -292,6 +298,7 @@ public class HomeFrame {
 		  InfoPanel.setLayout(null);
 		  
 		  JLabel lblCapacity = new JLabel("Capacity:");
+		  lblCapacity.setName("");
 		  lblCapacity.setFont(new Font("Tahoma", Font.BOLD, 18));
 		  lblCapacity.setBackground(Color.WHITE);
 		  lblCapacity.setForeground(SystemColor.controlDkShadow);
@@ -299,6 +306,8 @@ public class HomeFrame {
 		  InfoPanel.add(lblCapacity);
 		  
 		  textFieldCapacity = new JTextField();
+		  textFieldCapacity.setToolTipText("ShowsQueueCapacity.");
+		  textFieldCapacity.setOpaque(false);
 		  textFieldCapacity.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldCapacity.setEditable(false);
 		  textFieldCapacity.setBounds(129, 29, 126, 35);
@@ -312,6 +321,8 @@ public class HomeFrame {
 		  InfoPanel.add(lblSize);
 		  
 		  textFieldSize = new JTextField();
+		  textFieldSize.setToolTipText("ShowsQueueSize.");
+		  textFieldSize.setOpaque(false);
 		  textFieldSize.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldSize.setEditable(false);
 		  textFieldSize.setBounds(129, 147, 126, 35);
@@ -325,6 +336,8 @@ public class HomeFrame {
 		  InfoPanel.add(lblFront);
 		  
 		  textFieldFront = new JTextField();
+		  textFieldFront.setToolTipText("ShowsFrontElement.");
+		  textFieldFront.setOpaque(false);
 		  textFieldFront.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldFront.setEditable(false);
 		  textFieldFront.setBounds(129, 253, 126, 35);
@@ -339,6 +352,8 @@ public class HomeFrame {
 		  InfoPanel.add(lblRear);
 		  
 		  textFieldRear = new JTextField();
+		  textFieldRear.setToolTipText("ShowsRearElement.");
+		  textFieldRear.setOpaque(false);
 		  textFieldRear.setHorizontalAlignment(SwingConstants.CENTER);
 		  textFieldRear.setEditable(false);
 		  textFieldRear.setBounds(129, 370, 126, 35);
@@ -391,6 +406,7 @@ public class HomeFrame {
 		  DeleteFromPanel.setLayout(null);
 		  
 		  rdbtnDFront = new JRadioButton("Front");
+		  rdbtnDFront.setEnabled(false);
 		  rdbtnDFront.setForeground(SystemColor.desktop);
 		  rdbtnDFront.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		  rdbtnDFront.setSelected(true);
@@ -399,7 +415,8 @@ public class HomeFrame {
 		  rdbtnDFront.setBounds(6, 42, 75, 23);
 		  DeleteFromPanel.add(rdbtnDFront);
 		  
-		  JRadioButton rdbtnDRear = new JRadioButton("Rear");
+		  rdbtnDRear = new JRadioButton("Rear");
+		  rdbtnDRear.setEnabled(false);
 		  rdbtnDRear.setForeground(SystemColor.desktop);
 		  rdbtnDRear.setFont(new Font("Sitka Text", Font.BOLD, 18));
 		  buttonGroupDelete.add(rdbtnDRear);
@@ -416,7 +433,7 @@ public class HomeFrame {
 		  DeleteFromPanel.add(lblDeleteFrom);
 		  
 		  IconDsQ = new JLabel("");
-		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\Downloads\\Webp.net-resizeimage (1).png"));
+		  IconDsQ.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (1).png"));
 		  IconDsQ.setBounds(847, 48, 58, 76);
 		  visualPanel.add(IconDsQ);
 		  
@@ -533,8 +550,9 @@ public class HomeFrame {
 		btnDst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblQueueIsEmpty.setVisible(true);
+				IconDsQ1.setVisible(true);
 				panelQueue.removeAll();
-				horizontalStrut_1 = Box.createHorizontalStrut(245);
+				horizontalStrut_1 = Box.createHorizontalStrut(130);
 				panelQueue.add(horizontalStrut_1);
 				elements=null;
 				textFieldCapacity.setText("");
@@ -695,7 +713,7 @@ public class HomeFrame {
 		controlPanel.add(lblOperations);
 		
 		JLabel IconTK = new JLabel("");
-		IconTK.setIcon(new ImageIcon("C:\\Users\\Zubair\\Downloads\\Webp.net-resizeimage (2).png"));
+		IconTK.setIcon(new ImageIcon("C:\\Users\\Zubair\\eclipse-workspace\\.metadata\\img\\Webp.net-resizeimage (2).png"));
 		IconTK.setBounds(93, 11, 88, 85);
 		controlPanel.add(IconTK);
 	}
@@ -704,7 +722,7 @@ public class HomeFrame {
 		if(elements==null)
 			elements=new JPanel[capacity];
 		
-		Component horizontalStrut = Box.createHorizontalStrut(150);
+		Component horizontalStrut = Box.createHorizontalStrut(240);
 		panelQueue.add(horizontalStrut);
 		
 		panelDetls = new JPanel();

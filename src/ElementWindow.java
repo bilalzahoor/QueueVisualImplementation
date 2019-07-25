@@ -76,7 +76,9 @@ public class ElementWindow {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.isMaximumSizeSet();
 		frame.getContentPane().setLayout(null);
+		frame.setTitle("ElementWindow");
 		//frame.setResizable(false);
+		frame.setAlwaysOnTop(true);
 		
 		btnCrt = new JButton("Create");
 		btnCrt.setBounds(313, 702, 141, 21);
@@ -102,7 +104,10 @@ public class ElementWindow {
 							home.btnDeQ.setEnabled(true);
 							home.displayQueue(noOfElements,elements);
 							home.lblQueueIsEmpty.setVisible(false);
+							home.IconDsQ1.setVisible(false);
 							home.DeleteFromPanel.setEnabled(true);
+							home. rdbtnDFront.setEnabled(true);
+							home. rdbtnDRear.setEnabled(true);
 							frame.setVisible(false);
 				}
 			}
