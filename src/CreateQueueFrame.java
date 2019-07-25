@@ -67,8 +67,6 @@ public class CreateQueueFrame {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
-		frame.setTitle("CreateQueueFrame");
-		frame.setAlwaysOnTop(true);
 		
 		lblNewLabel = new JLabel("Enter Number of Elements:");
 		lblNewLabel.setFont(new Font("Sitka Subheading", Font.BOLD, 24));
@@ -76,7 +74,6 @@ public class CreateQueueFrame {
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setToolTipText("EnterMaxCapacity.");
 		textField.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent evt) {
 				char c = evt.getKeyChar();
