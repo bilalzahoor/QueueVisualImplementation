@@ -126,7 +126,7 @@ public class HomeFrame {
 		visualPanel.setLayout(null);
 		
 		lblDisplay = new JLabel("DISPLAY PANEL");
-		lblDisplay.setBounds(12, 13, 1603, 127);
+		lblDisplay.setBounds(12, 18, 1318, 127);
 		lblDisplay.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisplay.setForeground(Color.decode("#ffbf00"));
 		lblDisplay.setFont(new Font("Monospaced", Font.BOLD, 99));
@@ -663,9 +663,9 @@ public class HomeFrame {
 		
 		JLabel TKitHeadings = new JLabel("Toolkit");
 		TKitHeadings.setForeground(Color.decode("#e67e22"));
-		TKitHeadings.setFont(new Font("Sitka Banner", Font.BOLD, 72));
+		TKitHeadings.setFont(new Font("Sitka Banner", Font.BOLD, 82));
 		TKitHeadings.setHorizontalAlignment(SwingConstants.CENTER);
-		TKitHeadings.setBounds(12, 107, 241, 120);
+		TKitHeadings.setBounds(12, 11, 241, 216);
 		controlPanel.add(TKitHeadings);
 		
 		JLabel lblSelectType = new JLabel("Select Type: ");
