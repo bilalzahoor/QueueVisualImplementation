@@ -64,6 +64,7 @@ public class ElementWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setAlwaysOnTop(true);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -78,6 +79,7 @@ public class ElementWindow {
 		frame.getContentPane().setLayout(null);
 		//frame.setResizable(false);
 		frame.setTitle("ElementWindow.");
+		
 		
 		btnCrt = new JButton("Create");
 		btnCrt.setBounds(313, 702, 141, 21);

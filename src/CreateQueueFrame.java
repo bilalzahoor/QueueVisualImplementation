@@ -54,6 +54,7 @@ public class CreateQueueFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setAlwaysOnTop(true);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

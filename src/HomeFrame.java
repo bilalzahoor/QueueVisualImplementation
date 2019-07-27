@@ -517,7 +517,14 @@ public class HomeFrame {
 		cmbCapacity.setBounds(12, 515, 241, 32);
 		cmbCapacity.addItem("5");
 		cmbCapacity.addItem("10");
-		cmbCapacity.addItem("60");
+		cmbCapacity.addItem("15");
+		cmbCapacity.addItem("20");
+		cmbCapacity.addItem("25");
+		cmbCapacity.addItem("30");
+		cmbCapacity.addItem("35");
+		cmbCapacity.addItem("40");
+		cmbCapacity.addItem("45");
+		cmbCapacity.addItem("50");
 		controlPanel.add(cmbCapacity);
 		cmbCapacity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -981,10 +988,13 @@ public class HomeFrame {
   			EnqueuePanel.setVisible(false);
   			JLabel lblData;
   			JLabel lblPointer;
-			for(int i =size-1;i>p;i--) {
+			for(int i =size-1;i>=p;i--) {
 				lblData =(JLabel)elements[i].getComponent(1);
 				lblPointer=(JLabel)elements[i].getComponent(2);
 				((JLabel)elements[i+1].getComponent(1)).setText(lblData.getText());
+				if(((JLabel)elements[i].getComponent(2)).getText().compareTo("Front")==0)
+					((JLabel)elements[i+1].getComponent(2)).setText("");
+				else
 				((JLabel)elements[i+1].getComponent(2)).setText(lblPointer.getText());
 			}
 			((JLabel)elements[p].getComponent(1)).setText(txtFieldEnQ.getText());
